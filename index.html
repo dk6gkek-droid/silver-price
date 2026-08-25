@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO 핵심 -->
+  <title>오늘 은시세 | 은 1돈·100g·1kg 가격, 국제 은값·환율</title>
+  <meta name="description" content="오늘 은시세를 한눈에 확인하세요. 국제 은가격(XAG/USD), 원달러 환율, 은 1돈·100g·500g·1kg 원화 환산가격과 1주·1개월·1년 변동률을 제공합니다.">
+  <meta name="keywords" content="은시세, 오늘 은시세, 은 1돈 가격, 은 1kg 가격, 실버바 가격, 국제 은시세, 은값, 은 가격">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="오늘 은시세">
+  <link rel="canonical" href="https://example.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="오늘 은시세 | 은 1돈·100g·1kg 가격">
+  <meta property="og:description" content="국제 은가격과 원달러 환율을 반영한 오늘의 은 1돈·100g·500g·1kg 가격을 한눈에 확인하세요.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:site_name" content="오늘 은시세">
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="오늘 은시세">
+  <meta name="twitter:description" content="은 1돈·100g·500g·1kg 가격, 국제 은시세와 원달러 환율을 한눈에.">
+
+  <meta name="theme-color" content="#f4f6f8">
+
+  <!-- 구조화 데이터: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "오늘 은시세",
+    "url": "https://example.com/",
+    "description": "국제 은가격과 원달러 환율을 기반으로 은 1돈, 100g, 500g, 1kg 가격을 보여주는 은시세 정보 서비스",
+    "inLanguage": "ko-KR"
+  }
+  </script>
+
+  <!-- 구조화 데이터: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "은 1돈은 몇 g인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "은 1돈은 3.75g입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "국제 은시세는 어떤 단위를 사용하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "국제 은시세는 일반적으로 트로이온스(oz)당 미국 달러 가격으로 표시하며, 1 트로이온스는 약 31.1035g입니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "실버바 판매가격이 국제 은시세보다 비싼 이유는 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "국내 실물 실버바 가격에는 부가가치세, 제조 및 가공비, 유통비와 판매처 마진 등이 추가될 수 있기 때문입니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#f4f6f8;
+      --card:#ffffff;
+      --text:#16181d;
+      --sub:#667085;
+      --line:#e7e9ee;
+      --silver:#5f6b7a;
+      --silver-dark:#2d3642;
+      --soft:#eef1f5;
+      --up:#d94452;
+      --down:#2563eb;
+      --radius:22px;
+      --shadow:0 10px 35px rgba(27,39,51,.07);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 0%,rgba(203,213,225,.45),transparent 26%),
+        var(--bg);
+      font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(100% - 32px,920px);margin:auto}
+    header{padding:22px 0 12px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-size:18px;font-weight:900;letter-spacing:-.4px}
+    .brand span{color:var(--silver)}
+    .updated{font-size:12px;color:var(--sub)}
+    .hero{padding:22px 0 14px}
+    h1{font-size:clamp(30px,6vw,48px);line-height:1.15;letter-spacing:-1.8px;margin:0 0 12px}
+    .lead{color:var(--sub);margin:0;font-size:15px}
+    .quicklinks{display:flex;gap:8px;overflow:auto;padding:18px 0 4px;scrollbar-width:none}
+    .quicklinks::-webkit-scrollbar{display:none}
+    .chip{
+      flex:0 0 auto;background:#fff;border:1px solid var(--line);
+      padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700
+    }
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+    .card{
+      background:var(--card);border:1px solid rgba(224,228,234,.8);
+      box-shadow:var(--shadow);border-radius:var(--radius);padding:20px
+    }
+    .main-card{grid-column:1/-1;padding:24px}
+    .eyebrow{font-size:12px;color:var(--sub);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .price{font-size:clamp(38px,8vw,58px);font-weight:950;letter-spacing:-2.5px;line-height:1.1;margin:5px 0 8px}
+    .unit{font-size:16px;color:var(--sub);font-weight:800}
+    .change{font-weight:900;font-size:14px}
+    .up{color:var(--up)} .down{color:var(--down)}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+    .metric{padding:12px;background:var(--soft);border-radius:15px;text-align:center}
+    .metric small{display:block;color:var(--sub);font-size:11px;margin-bottom:3px}
+    .metric strong{font-size:14px}
+    .label{font-size:13px;color:var(--sub);font-weight:800}
+    .value{font-size:26px;font-weight:950;letter-spacing:-1px;margin-top:2px}
+    .weights{grid-column:1/-1}
+    .weight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+    .weight{
+      background:var(--soft);padding:14px;border-radius:16px
+    }
+    .weight b{display:block;font-size:14px}
+    .weight span{display:block;font-size:17px;font-weight:900;margin-top:3px}
+    .chart-card{grid-column:1/-1}
+    .chart-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap}
+    .tab{
+      border:0;background:var(--soft);padding:7px 10px;border-radius:10px;
+      font-weight:800;color:var(--sub);cursor:pointer
+    }
+    .tab.active{background:var(--silver-dark);color:#fff}
+    canvas{width:100%;height:260px;margin-top:20px}
+    .calculator{grid-column:1/-1}
+    .calc-row{display:grid;grid-template-columns:1fr 130px auto;gap:10px;margin-top:16px}
+    input,select,button{
+      font:inherit;border-radius:13px;border:1px solid var(--line);padding:13px;background:#fff
+    }
+    button{background:var(--silver-dark);color:#fff;border:0;font-weight:900;cursor:pointer}
+    .calc-result{
+      margin-top:14px;padding:16px;border-radius:16px;background:var(--soft);
+      font-size:15px
+    }
+    .calc-result strong{font-size:26px;letter-spacing:-1px}
+    .content{margin:22px 0}
+    .content h2{font-size:23px;letter-spacing:-.8px;margin:0 0 10px}
+    .content h3{font-size:18px;margin:24px 0 8px}
+    .content p,.content li{color:#4b5563;font-size:15px}
+    .faq{border-top:1px solid var(--line);padding:16px 0}
+    .faq:first-of-type{border-top:0}
+    .faq h3{margin:0 0 5px}
+    footer{padding:30px 0 50px;color:var(--sub);font-size:12px}
+    .notice{background:#eef1f5;border-radius:16px;padding:14px;margin-top:20px}
+    .api-status{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--sub);margin-top:10px}
+    .api-dot{width:8px;height:8px;border-radius:50%;background:#f59e0b}
+    .api-dot.live{background:#16a34a}
+    .api-dot.error{background:#dc2626}
+    .chart-message{padding:36px 12px;text-align:center;color:var(--sub);font-size:14px}
+    @media(max-width:700px){
+      .grid{grid-template-columns:1fr}
+      .main-card,.weights,.chart-card,.calculator{grid-column:1}
+      .metrics{grid-template-columns:repeat(2,1fr)}
+      .weight-grid{grid-template-columns:repeat(2,1fr)}
+      .calc-row{grid-template-columns:1fr 110px}
+      .calc-row button{grid-column:1/-1}
+      .updated{display:none}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="오늘 은시세 홈">오늘 <span>은시세</span></a>
+    <span class="updated">최근 업데이트: <time id="updatedAt">2026-08-25 09:00</time></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>오늘 은값,<br>1돈부터 1kg까지 바로 확인</h1>
+    <p class="lead">국내에서 익숙한 1돈·100g·500g·1kg 기준으로 오늘의 은 가격을 먼저 보여드립니다.</p>
+    <nav class="quicklinks" aria-label="주요 콘텐츠">
+      <a class="chip" href="#weights">1돈·1kg 가격</a>
+      <a class="chip" href="#today">오늘 은시세</a>
+      <a class="chip" href="#chart">은시세 차트</a>
+      <a class="chip" href="#calculator">은값 계산기</a>
+      <a class="chip" href="#guide">실버바 가격 차이</a>
+    </nav>
+  </section>
+
+  <section id="today" class="grid" aria-label="오늘의 은 가격 요약">
+
+    <article id="weights" class="card main-card">
+      <div class="eyebrow">오늘의 은 가격 · 원화 환산 기준</div>
+      <div class="value" style="font-size:28px;margin-top:5px">무게별 오늘의 은 가격</div>
+
+      <div class="weight-grid" style="margin-top:18px">
+        <div class="weight">
+          <b>은 1돈 · 3.75g</b>
+          <span id="priceDon">0원</span>
+        </div>
+        <div class="weight">
+          <b>은 100g</b>
+          <span id="price100g">0원</span>
+        </div>
+        <div class="weight">
+          <b>은 500g</b>
+          <span id="price500g">0원</span>
+        </div>
+        <div class="weight">
+          <b>은 1kg</b>
+          <span id="price1kg">0원</span>
+        </div>
+      </div>
+
+      <div class="metrics" aria-label="기간별 은가격 변화">
+        <div class="metric"><small>오늘</small><strong id="change1d">—</strong></div>
+        <div class="metric"><small>1주</small><strong id="change1w">—</strong></div>
+        <div class="metric"><small>1개월</small><strong id="change1m">—</strong></div>
+        <div class="metric"><small>1년</small><strong id="change1y">—</strong></div>
+      </div>
+
+      <div class="api-status">
+        <span id="apiDot" class="api-dot"></span>
+        <span id="apiStatus">은시세 API 연결 중</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="label">은 1g 기준</div>
+      <div id="pricePerGram" class="value">0원/g</div>
+      <p class="lead">국제 은값과 환율을 원화로 환산한 참고가격</p>
+    </article>
+
+    <article class="card">
+      <div class="label">오늘 원·달러 환율</div>
+      <div id="usdKrw" class="value">0원</div>
+      <p class="lead">1 USD 기준</p>
+    </article>
+
+    <article class="card main-card">
+      <div class="eyebrow">참고 · 국제 은시세</div>
+      <div>
+        <span id="xagPrice" class="price" style="font-size:34px">$00.00</span>
+        <span class="unit">/ 트로이온스</span>
+      </div>
+      <div id="dailyChange" class="change">전일 대비 —</div>
+      <p class="lead" style="margin-top:8px">
+        국제 은시세는 트로이온스(약 31.1035g) 단위로 거래되며,
+        위 국내 환산가격 계산에 사용됩니다.
+      </p>
+    </article>
+
+    <article id="chart" class="card chart-card">
+      <div class="chart-head">
+        <div>
+          <div class="label">은시세 변화</div>
+          <div class="value" style="font-size:22px">국제 은가격 추이</div>
+        </div>
+        <div class="tabs" aria-label="차트 기간 선택">
+          <button class="tab" data-range="7">1주</button>
+          <button class="tab" data-range="30">1개월</button>
+          <button class="tab active" data-range="365">1년</button>
+        </div>
+      </div>
+      <div id="chartMessage" class="chart-message">과거 시세 데이터를 불러오는 중입니다.</div>
+      <canvas id="silverChart" width="860" height="260" aria-label="은가격 기간별 차트" hidden></canvas>
+    </article>
+
+    <article id="calculator" class="card calculator">
+      <div class="label">은값 계산기</div>
+      <div class="value" style="font-size:24px">내가 가진 은은 지금 얼마?</div>
+      <div class="calc-row">
+        <input id="amount" type="number" min="0" step="0.01" value="1" aria-label="은 무게 입력">
+        <select id="unit" aria-label="은 무게 단위 선택">
+          <option value="3.75">돈</option>
+          <option value="1">g</option>
+          <option value="100">100g</option>
+          <option value="1000" selected>kg</option>
+        </select>
+        <button id="calculateBtn" type="button">계산하기</button>
+      </div>
+      <div class="calc-result">
+        현재 국제시세 환산 기준 약 <strong id="calcValue">0원</strong>
+      </div>
+    </article>
+  </section>
+
+  <!-- 검색엔진이 이해할 수 있는 실제 텍스트 콘텐츠 -->
+  <section id="guide" class="card content">
+    <h2>오늘 은시세는 어떻게 계산하나요?</h2>
+    <p>
+      국제 은시세는 일반적으로 미국 달러 기준 트로이온스(oz)당 가격으로 표시됩니다.
+      1 트로이온스는 약 31.1035g이며, 국제 은가격에 원·달러 환율을 적용하면
+      국내 원화 기준의 이론적인 은가격을 계산할 수 있습니다.
+    </p>
+
+    <h3>은 1돈은 몇 g인가요?</h3>
+    <p>
+      은 1돈은 3.75g입니다. 이 사이트에서는 국제 은시세를 g 단위로 환산한 뒤
+      1돈, 100g, 500g, 1kg 가격을 자동 계산합니다.
+    </p>
+
+    <h3>실버바 가격은 왜 국제 은시세보다 비싼가요?</h3>
+    <p>
+      국제 은시세를 원화로 단순 환산한 가격과 실제 국내 실버바 판매가격은 같지 않을 수 있습니다.
+      실물 은 제품에는 부가가치세, 제조·가공비, 유통비, 판매처 마진 등이 추가될 수 있기 때문입니다.
+      따라서 본 페이지의 가격은 국제시세 기반의 참고용 환산가격이며 실제 구매·매입가격과 차이가 있을 수 있습니다.
+    </p>
+
+    <h3>은가격은 무엇에 영향을 받나요?</h3>
+    <p>
+      은은 귀금속인 동시에 산업용 수요가 큰 원자재입니다. 국제 원자재 시장의 수급,
+      미국 달러 가치, 금리, 경기 전망, 태양광·전자산업 등 산업 수요의 영향을 받을 수 있습니다.
+      한국에서 체감하는 은가격은 여기에 원·달러 환율 변화의 영향도 함께 받습니다.
+    </p>
+  </section>
+
+  <section class="card content" aria-labelledby="faq-title">
+    <h2 id="faq-title">은시세 자주 묻는 질문</h2>
+    <article class="faq">
+      <h3>은 1kg은 몇 돈인가요?</h3>
+      <p>1kg은 1,000g이므로 약 266.67돈입니다.</p>
+    </article>
+    <article class="faq">
+      <h3>은시세는 매일 바뀌나요?</h3>
+      <p>국제 은가격은 시장에서 지속적으로 변하며 원·달러 환율도 함께 움직이기 때문에 원화 환산 은가격 역시 변동합니다.</p>
+    </article>
+    <article class="faq">
+      <h3>이 가격으로 실제 실버바를 살 수 있나요?</h3>
+      <p>아닙니다. 표시 가격은 국제시세와 환율을 이용한 이론적 환산값이며 실물 제품의 부가세·가공비·유통비 등은 별도일 수 있습니다.</p>
+    </article>
+  </section>
+
+  <div class="notice">
+    ※ 본 사이트의 정보는 투자 권유가 아닌 시세 참고용입니다. 실제 거래가격은 거래처와 상품에 따라 다를 수 있습니다.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>오늘 은시세</strong><br>
+    국제 은가격 · 원달러 환율 · 은 1돈 · 은 100g · 은 500g · 은 1kg 환산정보
+  </div>
+</footer>
+
+
+<script>
+  /*
+   * 실제 데이터 연결
+   * 1) 현재 국제 은시세: gold-api.com (무료, API 키 없음, CORS 지원)
+   *    GET https://api.gold-api.com/price/XAG
+   * 2) USD/KRW 환율: Frankfurter (무료, API 키 없음)
+   *    GET https://api.frankfurter.dev/v2/rate/USD/KRW
+   * 3) 과거 은시세: 같은 사이트의 /api/history 프록시 사용
+   *    Cloudflare Pages Function에서 GOLD_API_KEY 환경변수로 Gold API history를 호출합니다.
+   *
+   * 가격은 "국제 은 현물가격 × 환율" 기반의 참고용 원화 환산값입니다.
+   */
+
+  const API = {
+    silverNow: "https://api.gold-api.com/price/XAG",
+    usdKrw: "https://api.frankfurter.dev/v2/rate/USD/KRW",
+    history: "/api/history"
+  };
+
+  const state = {
+    xagUsd: null,
+    usdKrw: null,
+    updatedAt: null,
+    history: [],
+    changes: { d1: null, w1: null, m1: null, y1: null }
+  };
+
+  const TROY_OUNCE_GRAMS = 31.1034768;
+
+  const $ = id => document.getElementById(id);
+  const won = n => Number.isFinite(n) ? Math.round(n).toLocaleString("ko-KR") + "원" : "—";
+  const percent = n => Number.isFinite(n) ? `${n >= 0 ? "+" : ""}${n.toFixed(2)}%` : "—";
+
+  function pricePerGram() {
+    if (!Number.isFinite(state.xagUsd) || !Number.isFinite(state.usdKrw)) return null;
+    return (state.xagUsd * state.usdKrw) / TROY_OUNCE_GRAMS;
+  }
+
+  function setStatus(type, text) {
+    $("apiDot").className = "api-dot" + (type ? ` ${type}` : "");
+    $("apiStatus").textContent = text;
+  }
+
+  function setChange(el, value, prefix = "") {
+    el.textContent = Number.isFinite(value) ? `${prefix}${percent(value)}` : `${prefix}—`;
+    el.classList.remove("up", "down");
+    if (Number.isFinite(value)) el.classList.add(value >= 0 ? "up" : "down");
+  }
+
+  function renderPrices() {
+    if (Number.isFinite(state.xagUsd)) $("xagPrice").textContent = `$${state.xagUsd.toFixed(2)}`;
+    if (Number.isFinite(state.usdKrw)) $("usdKrw").textContent = won(state.usdKrw);
+
+    const g = pricePerGram();
+    if (Number.isFinite(g)) {
+      $("pricePerGram").textContent = won(g) + "/g";
+      $("priceDon").textContent = won(g * 3.75);
+      $("price100g").textContent = won(g * 100);
+      $("price500g").textContent = won(g * 500);
+      $("price1kg").textContent = won(g * 1000);
+      calculate();
+    }
+
+    setChange($("change1d"), state.changes.d1);
+    setChange($("change1w"), state.changes.w1);
+    setChange($("change1m"), state.changes.m1);
+    setChange($("change1y"), state.changes.y1);
+    setChange($("dailyChange"), state.changes.d1, "전일 대비 ");
+
+    if (state.updatedAt) {
+      const dt = new Date(state.updatedAt);
+      if (!Number.isNaN(dt.getTime())) {
+        $("updatedAt").dateTime = dt.toISOString();
+        $("updatedAt").textContent = new Intl.DateTimeFormat("ko-KR", {
+          timeZone: "Asia/Seoul",
+          year: "numeric", month: "2-digit", day: "2-digit",
+          hour: "2-digit", minute: "2-digit", hour12: false
+        }).format(dt);
+      }
+    }
+  }
+
+  function calculate() {
+    const g = pricePerGram();
+    if (!Number.isFinite(g)) {
+      $("calcValue").textContent = "시세 로딩 중";
+      return;
+    }
+    const amount = Math.max(0, Number($("amount").value || 0));
+    const unitGrams = Number($("unit").value);
+    $("calcValue").textContent = won(g * amount * unitGrams);
+  }
+
+  $("calculateBtn").addEventListener("click", calculate);
+  $("amount").addEventListener("input", calculate);
+  $("unit").addEventListener("change", calculate);
+
+  async function fetchJson(url, options = {}, timeoutMs = 10000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { ...options, signal: controller.signal, cache: "no-store" });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      return await res.json();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function loadCurrentData() {
+    setStatus("", "실시간 은시세·환율 연결 중");
+
+    try {
+      const [silver, fx] = await Promise.all([
+        fetchJson(API.silverNow),
+        fetchJson(API.usdKrw)
+      ]);
+
+      const silverPrice = Number(silver.price);
+      const rate = Number(fx.rate);
+
+      if (!Number.isFinite(silverPrice)) throw new Error("은시세 응답 형식 오류");
+      if (!Number.isFinite(rate)) throw new Error("환율 응답 형식 오류");
+
+      state.xagUsd = silverPrice;
+      state.usdKrw = rate;
+      state.updatedAt = silver.updatedAt || new Date().toISOString();
+
+      setStatus("live", "실제 API 데이터");
+      renderPrices();
+    } catch (err) {
+      console.error(err);
+      setStatus("error", "데이터 연결 실패 · 잠시 후 새로고침");
+      $("dailyChange").textContent = "현재 시세를 불러오지 못했습니다.";
+    }
+  }
+
+  function pctChange(current, old) {
+    return Number.isFinite(current) && Number.isFinite(old) && old !== 0
+      ? ((current / old) - 1) * 100
+      : null;
+  }
+
+  function normalizeHistory(rows) {
+    if (!Array.isArray(rows)) return [];
+    return rows.map(row => {
+      const date = row.day || row.date || row.timestamp || row.time;
+      const raw = row.avg_price ?? row.max_price ?? row.price ?? row.close;
+      const price = Number(raw);
+      return { date, price };
+    }).filter(x => x.date && Number.isFinite(x.price))
+      .sort((a,b) => new Date(a.date) - new Date(b.date));
+  }
+
+  function nearestPastPrice(daysAgo) {
+    if (!state.history.length) return null;
+    const target = Date.now() - daysAgo * 86400000;
+    let best = null;
+    let bestDiff = Infinity;
+    for (const p of state.history) {
+      const ts = new Date(p.date).getTime();
+      if (!Number.isFinite(ts)) continue;
+      const diff = Math.abs(ts - target);
+      if (diff < bestDiff) { best = p.price; bestDiff = diff; }
+    }
+    return best;
+  }
+
+  async function loadHistory() {
+    try {
+      const data = await fetchJson(`${API.history}?days=370`);
+      state.history = normalizeHistory(data);
+
+      if (!state.history.length) throw new Error("과거 시세 없음");
+
+      const current = Number.isFinite(state.xagUsd)
+        ? state.xagUsd
+        : state.history[state.history.length - 1].price;
+
+      state.changes.d1 = pctChange(current, nearestPastPrice(1));
+      state.changes.w1 = pctChange(current, nearestPastPrice(7));
+      state.changes.m1 = pctChange(current, nearestPastPrice(30));
+      state.changes.y1 = pctChange(current, nearestPastPrice(365));
+
+      $("chartMessage").hidden = true;
+      $("silverChart").hidden = false;
+      renderPrices();
+      drawChart(currentRange);
+    } catch (err) {
+      console.warn("History API:", err);
+      $("chartMessage").innerHTML =
+        '현재값·환율은 실제 API로 표시 중입니다.<br>1주·1개월·1년 차트는 Cloudflare에 <b>GOLD_API_KEY</b>를 등록하면 활성화됩니다.';
+    }
+  }
+
+  const canvas = $("silverChart");
+  const ctx = canvas.getContext("2d");
+  let currentRange = 365;
+
+  function drawChart(days) {
+    currentRange = days;
+    if (!state.history.length || canvas.hidden) return;
+
+    const cutoff = Date.now() - days * 86400000;
+    let points = state.history.filter(p => new Date(p.date).getTime() >= cutoff);
+    if (points.length < 2) points = state.history.slice(-Math.max(2, days));
+
+    const data = points.map(p => p.price);
+    const dpr = window.devicePixelRatio || 1;
+    const cssWidth = canvas.clientWidth || 820;
+    const cssHeight = 260;
+    canvas.width = cssWidth * dpr;
+    canvas.height = cssHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const min = Math.min(...data);
+    const max = Math.max(...data);
+    const span = max - min || 1;
+    const pad = 20;
+
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
+    ctx.strokeStyle = "#e7e9ee";
+    ctx.lineWidth = 1;
+    for (let i=1; i<4; i++) {
+      const y = (cssHeight / 4) * i;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(cssWidth,y); ctx.stroke();
+    }
+
+    const x = i => pad + i * ((cssWidth - pad*2) / Math.max(1, data.length-1));
+    const y = v => cssHeight-pad - ((v-min)/span)*(cssHeight-pad*2);
+
+    ctx.beginPath();
+    data.forEach((v,i) => i ? ctx.lineTo(x(i),y(v)) : ctx.moveTo(x(i),y(v)));
+    ctx.strokeStyle = "#4b5563";
+    ctx.lineWidth = 2.4;
+    ctx.stroke();
+
+    ctx.fillStyle = "#667085";
+    ctx.font = '12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
+    ctx.fillText(`$${max.toFixed(2)}`, 4, 14);
+    ctx.fillText(`$${min.toFixed(2)}`, 4, cssHeight-5);
+  }
+
+  document.querySelectorAll(".tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+      btn.classList.add("active");
+      drawChart(Number(btn.dataset.range));
+    });
+  });
+
+  window.addEventListener("resize", () => drawChart(currentRange));
+
+  // 첫 화면에서는 실제 현재값/환율을 우선 빠르게 불러오고,
+  // 과거 차트는 별도 요청하여 실패해도 현재값 표시는 유지합니다.
+  loadCurrentData().then(loadHistory);
+</script>
+
+</body>
+</html>
