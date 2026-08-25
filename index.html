@@ -377,8 +377,7 @@
    */
 
   const API = {
-    silverNow: "https://api.gold-api.com/price/XAG",
-    usdKrw: "https://api.frankfurter.dev/v2/rate/USD/KRW",
+    current: "/api/current",
     history: "/api/history"
   };
 
@@ -476,20 +475,17 @@
     setStatus("", "실시간 은시세·환율 연결 중");
 
     try {
-      const [silver, fx] = await Promise.all([
-        fetchJson(API.silverNow),
-        fetchJson(API.usdKrw)
-      ]);
+      const data = await fetchJson(API.current);
 
-      const silverPrice = Number(silver.price);
-      const rate = Number(fx.rate);
+      const silverPrice = Number(data.xagUsd);
+      const rate = Number(data.usdKrw);
 
       if (!Number.isFinite(silverPrice)) throw new Error("은시세 응답 형식 오류");
       if (!Number.isFinite(rate)) throw new Error("환율 응답 형식 오류");
 
       state.xagUsd = silverPrice;
       state.usdKrw = rate;
-      state.updatedAt = silver.updatedAt || new Date().toISOString();
+      state.updatedAt = data.updatedAt || new Date().toISOString();
 
       setStatus("live", "실제 API 데이터");
       renderPrices();
@@ -554,7 +550,7 @@
     } catch (err) {
       console.warn("History API:", err);
       $("chartMessage").innerHTML =
-        '현재값·환율은 실제 API로 표시 중입니다.<br>1주·1개월·1년 차트는 Cloudflare에 <b>GOLD_API_KEY</b>를 등록하면 활성화됩니다.';
+        '현재값·환율은 정상 표시 중입니다.<br>과거 시세 API 연결을 확인하면 1주·1개월·1년 변동률과 차트가 표시됩니다.';
     }
   }
 
