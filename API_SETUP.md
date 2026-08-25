@@ -9,7 +9,7 @@ Cloudflare Pages → Settings → Variables and secrets 에서
 `GOLD_API_KEY`를 Production Secret으로 등록한 뒤 재배포하세요.
 
 배포 후 테스트:
-- https://silver-price.pages.dev/api/current
-- https://silver-price.pages.dev/api/history?days=30
+- https://silver-today.com/api/current
+- https://silver-today.com/api/history?days=30
 
 API 키는 HTML이나 GitHub 코드에 직접 적지 마세요.
