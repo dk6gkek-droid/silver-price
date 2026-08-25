@@ -44,36 +44,4 @@
   국제 은가격과 환율을 바탕으로 한 정보 제공 서비스입니다. 투자 권유가 아닙니다.
 </div></footer>
 
-<script>
-const API={current:"/api/current",history:"/api/history",longterm:"/api/longterm"};
-const state={xag:null,fx:null,hist:[],longterm:null}; const OZ=31.1034768;
-const $=id=>document.getElementById(id); const won=n=>Number.isFinite(n)?Math.round(n).toLocaleString("ko-KR")+"원":"—";
-const pct=n=>Number.isFinite(n)?`${n>=0?"+":""}${n.toFixed(2)}%`:"—";
-function cls(n){return Number.isFinite(n)?(n>=0?"up":"down"):""}
-function pg(){return Number.isFinite(state.xag)&&Number.isFinite(state.fx)?state.xag*state.fx/OZ:null}
-function nearest(days){if(!state.hist.length)return null;const t=Date.now()-days*86400000;let b=null,d=Infinity;for(const p of state.hist){const q=Math.abs(new Date(p.date)-t);if(q<d){b=p.price;d=q}}return b}
-function change(cur,old){return Number.isFinite(cur)&&Number.isFinite(old)&&old?((cur/old)-1)*100:null}
-function normalize(a){return Array.isArray(a)?a.map(r=>({date:r.day||r.date||r.timestamp||r.time,price:Number(r.avg_price??r.price??r.close??r.max_price)})).filter(x=>x.date&&Number.isFinite(x.price)).sort((a,b)=>new Date(a.date)-new Date(b.date)):[]}
-function render(){const g=pg(); if(Number.isFinite(g)){ $("priceDonHero").textContent=won(g*3.75);$("price100g").textContent=won(g*100);$("price500g").textContent=won(g*500);$("price1kg").textContent=won(g*1000);$("pricePerGram").textContent=won(g)+"/g";calc()}
- if(Number.isFinite(state.xag))$("xagPrice").textContent="$"+state.xag.toFixed(2);if(Number.isFinite(state.fx))$("usdKrw").textContent=won(state.fx);
- if(state.hist.length){const c=state.xag||state.hist.at(-1).price;const vals=[["change1d",1],["change1w",7],["change1m",30],["change1y",365]];let snap=[];for(const [id,d] of vals){const v=change(c,nearest(d));$(id).textContent=pct(v);$(id).className=cls(v);if(d==1||d==7||d==365)snap.push(`${d==1?"오늘":d==7?"1주":"1년"} <span class="${cls(v)}">${pct(v)}</span>`)}$("snapshotText").innerHTML=snap.join(" · ")}
-}
-async function get(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(r.status);return r.json()}
-async function load(){try{const d=await get(API.current);state.xag=Number(d.xagUsd);state.fx=Number(d.usdKrw);$("apiStatus").textContent="실제 API 데이터";$("apiStatus").classList.add("ok");if(d.updatedAt)$("updatedAt").textContent=new Date(d.updatedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"});render()}catch(e){$("apiStatus").textContent="현재 시세 연결 확인 필요"}
- try{state.hist=normalize(await get(API.history+"?days=370"));render()}catch(e){}
- try{state.longterm=await get(API.longterm);renderLongterm()}catch(e){document.querySelectorAll('[id^="mdd"]').forEach(x=>{if(!x.id.includes("date"))x.textContent="데이터 확인 중"});$("fedSummary").textContent="장기 데이터 연결을 확인하면 자동 계산됩니다."}}
-}
-function calc(){const g=pg();if(!Number.isFinite(g))return;const a=Math.max(0,Number($("amount").value||0)),u=Number($("unit").value);$("calcValue").textContent=won(g*a*u)}
-$("amount").addEventListener("input",calc);$("unit").addEventListener("change",calc);$("calculateBtn").addEventListener("click",calc);
-function renderMdd(y){const m=state.longterm?.metrics?.[y]?.silverMdd;const el=$("mdd"+y),de=$("mdd"+y+"date");if(!m){el.textContent="—";return}el.textContent=pct(m.value);el.className="down";de.textContent=`${String(m.peakDate).slice(0,10)} → ${String(m.troughDate).slice(0,10)}`}
-function drawLines(canvas, series, keys){const ctx=canvas.getContext("2d"),dpr=devicePixelRatio||1,w=canvas.clientWidth||900,h=300;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);if(!series?.length)return;const vals=series.flatMap(x=>keys.map(k=>Number(x[k])).filter(Number.isFinite));if(!vals.length)return;let min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;min-=span*.08;max+=span*.08;span=max-min;const L=42,R=12,T=15,B=25;ctx.strokeStyle="#e5e9ef";ctx.fillStyle="#7b8491";ctx.font='11px sans-serif';for(let i=0;i<4;i++){let yy=T+(h-T-B)*i/3,v=max-span*i/3;ctx.beginPath();ctx.moveTo(L,yy);ctx.lineTo(w-R,yy);ctx.stroke();ctx.fillText(v.toFixed(0),4,yy+4)}const xx=i=>L+i*(w-L-R)/Math.max(1,series.length-1),yy=v=>h-B-(v-min)/span*(h-T-B);const colors=["#596574","#b28b2e"];keys.forEach((k,ki)=>{ctx.beginPath();series.forEach((p,i)=>{const v=Number(p[k]);if(!Number.isFinite(v))return;i?ctx.lineTo(xx(i),yy(v)):ctx.moveTo(xx(i),yy(v))});ctx.strokeStyle=colors[ki];ctx.lineWidth=2.4;ctx.stroke()})}
-function renderCompare(y){const m=state.longterm?.metrics?.[y];if(!m)return;$("silverReturn").textContent=pct(m.silverReturn);$("silverReturn").className=cls(m.silverReturn);$("goldReturn").textContent=pct(m.goldReturn);$("goldReturn").className=cls(m.goldReturn);$("riskCompare").textContent=`은 MDD ${pct(m.silverMdd?.value)} · 금 MDD ${pct(m.goldMdd?.value)}`;
- let comp=state.longterm.comparison||[];if(y<20){const cut=Date.now()-y*365.25*86400000;comp=comp.filter(p=>new Date(p.date).getTime()>=cut);if(comp.length){const s0=comp[0].silverIndex,g0=comp[0].goldIndex;comp=comp.map(p=>({...p,silverIndex:p.silverIndex/s0*100,goldIndex:p.goldIndex/g0*100}))}}drawLines($("compareChart"),comp,["silverIndex","goldIndex"])}
-function renderFed(id){const c=state.longterm?.cycles?.find(x=>x.id===id);if(!c||!c.silver||!c.gold){$("fedSummary").textContent="해당 구간 데이터가 충분하지 않습니다.";return}$("fedSummary").innerHTML=`${c.label}: 은 <b class="${cls(c.silver.change)}">${pct(c.silver.change)}</b> · 금 <b class="${cls(c.gold.change)}">${pct(c.gold.change)}</b>`;
- const gm=new Map(c.gold.series.map(x=>[String(x.date).slice(0,7),x.index]));const joined=c.silver.series.map(x=>({date:x.date,silverIndex:x.index,goldIndex:gm.get(String(x.date).slice(0,7))})).filter(x=>Number.isFinite(x.goldIndex));drawLines($("fedChart"),joined,["silverIndex","goldIndex"])}
-function renderLongterm(){[5,10,20].forEach(renderMdd);renderCompare(20);renderFed("2022-2023")}
-document.querySelectorAll(".compare-range").forEach(b=>b.onclick=()=>{document.querySelectorAll(".compare-range").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderCompare(Number(b.dataset.years))});
-document.querySelectorAll(".fed-cycle").forEach(b=>b.onclick=()=>{document.querySelectorAll(".fed-cycle").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderFed(b.dataset.cycle)});
-window.addEventListener("resize",()=>{if(state.longterm){const y=Number(document.querySelector(".compare-range.active")?.dataset.years||20);renderCompare(y);renderFed(document.querySelector(".fed-cycle.active")?.dataset.cycle||"2022-2023")}});
-load();
-</script></body></html>
+<script src="/app-v31.js?v=20260826-1" defer></script></body></html>
