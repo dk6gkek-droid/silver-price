@@ -1,3 +1,23 @@
+const ONE_HOUR = 60 * 60;
+const ONE_DAY = 24 * 60 * 60;
+
+function jsonHeaders(ttl) {
+  return {
+    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": `public, max-age=${ttl}, s-maxage=${ttl}, stale-while-revalidate=${ONE_DAY}, stale-if-error=${7 * ONE_DAY}`
+  };
+}
+
+async function fetchWithTimeout(url, options = {}, ms = 15000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function onRequestGet(context) {
   const { env } = context;
 
@@ -10,16 +30,16 @@ export async function onRequestGet(context) {
 
   try {
     const [silverRes, fxRes] = await Promise.all([
-      fetch("https://api.gold-api.com/price/XAG", {
+      fetchWithTimeout("https://api.gold-api.com/price/XAG", {
         headers: {
           "x-api-key": env.GOLD_API_KEY,
           "Accept": "application/json"
         },
-        cf: { cacheTtl: 300, cacheEverything: true }
+        cf: { cacheTtl: ONE_HOUR, cacheEverything: true }
       }),
-      fetch("https://api.frankfurter.dev/v2/rate/USD/KRW", {
+      fetchWithTimeout("https://api.frankfurter.dev/v2/rate/USD/KRW", {
         headers: { "Accept": "application/json" },
-        cf: { cacheTtl: 1800, cacheEverything: true }
+        cf: { cacheTtl: ONE_HOUR, cacheEverything: true }
       })
     ]);
 
@@ -65,24 +85,24 @@ export async function onRequestGet(context) {
     );
 
     if (!Number.isFinite(xagUsd)) {
-      return Response.json({ error: "silver_price_missing" }, { status: 502 });
+      return Response.json({ error: "silver_price_missing" }, { status: 502, headers: { "Cache-Control": "no-store" } });
     }
     if (!Number.isFinite(usdKrw)) {
-      return Response.json({ error: "fx_rate_missing" }, { status: 502 });
+      return Response.json({ error: "fx_rate_missing" }, { status: 502, headers: { "Cache-Control": "no-store" } });
     }
 
-    return Response.json({
+    return new Response(JSON.stringify({
       xagUsd,
       usdKrw,
       updatedAt: silver.updatedAt || silver.timestamp || new Date().toISOString(),
-      source: { silver: "Gold API", fx: "Frankfurter" }
-    }, {
-      headers: { "Cache-Control": "public, max-age=300, s-maxage=300" }
-    });
+      source: { silver: "Gold API", fx: "Frankfurter" },
+      cachePolicy: "1 hour"
+    }), { headers: jsonHeaders(ONE_HOUR) });
 
   } catch (err) {
+    const detail = String(err?.message || err);
     return Response.json(
-      { error: "current_endpoint_failed", detail: String(err?.message || err) },
+      { error: "current_endpoint_failed", detail },
       { status: 500, headers: { "Cache-Control": "no-store" } }
     );
   }

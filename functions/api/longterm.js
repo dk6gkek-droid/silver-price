@@ -1,4 +1,5 @@
 const DAY = 86400000;
+const TWO_DAYS = 2 * 24 * 60 * 60;
 
 function normalize(rows) {
   if (!Array.isArray(rows)) return [];
@@ -59,7 +60,7 @@ function monthly(points) {
     const d = new Date(p.date);
     if (Number.isNaN(d.getTime())) continue;
     const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,"0")}`;
-    map.set(key, p); // last available observation of month
+    map.set(key, p);
   }
   return [...map.values()];
 }
@@ -78,6 +79,16 @@ function normalizedRange(points, start, end) {
   };
 }
 
+async function fetchWithTimeout(url, options = {}, ms = 25000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function fetchMetal(symbol, env) {
   const now = Math.floor(Date.now()/1000);
   const start = now - Math.round(8500 * 86400);
@@ -88,18 +99,25 @@ async function fetchMetal(symbol, env) {
   u.searchParams.set("groupBy", "day");
   u.searchParams.set("aggregation", "avg");
   u.searchParams.set("orderBy", "asc");
-  const res = await fetch(u.toString(), {
+  const res = await fetchWithTimeout(u.toString(), {
     headers: { "x-api-key": env.GOLD_API_KEY, "Accept":"application/json" },
-    cf: { cacheTtl: 21600, cacheEverything: true }
+    cf: { cacheTtl: TWO_DAYS, cacheEverything: true }
   });
-  if (!res.ok) throw new Error(`${symbol} history ${res.status}`);
-  return normalize(await res.json());
+  const text = await res.text();
+  if (!res.ok) throw new Error(`${symbol} history ${res.status}: ${text.slice(0, 120)}`);
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error(`${symbol} history invalid json`);
+  }
+  return normalize(json);
 }
 
 export async function onRequestGet(context) {
   const { env } = context;
   if (!env.GOLD_API_KEY) {
-    return Response.json({ error:"GOLD_API_KEY is not configured" }, { status:503 });
+    return Response.json({ error:"GOLD_API_KEY is not configured" }, { status:503, headers:{"Cache-Control":"no-store"} });
   }
 
   try {
@@ -147,14 +165,18 @@ export async function onRequestGet(context) {
       };
     }).filter(Boolean);
 
-    return Response.json({
+    return new Response(JSON.stringify({
       generatedAt: new Date().toISOString(),
       basis: "Gold API daily average XAG/USD and XAU/USD",
+      cachePolicy: "48 hours",
       metrics,
       comparison,
       cycles
-    }, {
-      headers:{ "Cache-Control":"public, max-age=21600, s-maxage=21600" }
+    }), {
+      headers:{
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": `public, max-age=${TWO_DAYS}, s-maxage=${TWO_DAYS}, stale-while-revalidate=${TWO_DAYS}, stale-if-error=${14 * 24 * 60 * 60}`
+      }
     });
   } catch (err) {
     return Response.json(
