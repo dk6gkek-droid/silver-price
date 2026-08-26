@@ -60,3 +60,9 @@ ETF/ETN 정보는 2026-08-26 기준 확인한 공식 자료 중심이며, 국내
 - longterm 최종 계산결과도 별도 14일 캐시, 48시간 refresh
 - 브라우저 localStorage에도 history 7일, longterm 30일 fallback
 - premium/current 기능은 기존 동작 유지
+
+## v36.1 Hotfix
+- V36에서 누락된 loadPremium() 함수 복구
+- premium 오류가 current/history/longterm 흐름을 막지 않도록 독립 try/catch 유지
+- 계산기 DOM 이벤트도 존재 여부 확인 후 연결
+- JS 캐시버전 20260826-61로 갱신

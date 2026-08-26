@@ -37,8 +37,41 @@ async function load(){
  }
 }
 
+
+async function loadPremium(){
+  const intl=pg();
+  if(Number.isFinite(intl) && $("premiumIntl")){
+    $("premiumIntl").textContent=won(intl*1000);
+  }
+
+  try{
+    const d=await get(API.premium);
+    const buy=Number(d.customerBuy);
+    const pp=Number(d.premiumPct);
+
+    if($("premiumKbBuy")) $("premiumKbBuy").textContent=won(buy);
+    if($("premiumPct")){
+      $("premiumPct").textContent=Number.isFinite(pp)?`+${pp.toFixed(1)}%`:"—";
+    }
+    if($("premiumKbLabel")){
+      $("premiumKbLabel").textContent=d.mode==="actual"?"KB 고객 구매가":"KB 공식구조 예상가";
+    }
+    if($("premiumSource")){
+      const dt=d.date?String(d.date).replaceAll("-","."):"";
+      $("premiumSource").textContent=d.mode==="actual"
+        ?`KB국민은행 고시 ${dt}${d.time?" "+d.time:""} · 24시간 캐시`
+        :`KB 가격조회 파싱 실패 시 공식 판매마진(19%)·부가세 구조로 계산한 예상값 · ${dt}`;
+    }
+  }catch(e){
+    if($("premiumKbBuy")) $("premiumKbBuy").textContent="잠시 후 확인";
+    if($("premiumSource")){
+      $("premiumSource").textContent="KB 가격 비교는 메인 시세와 독립적으로 불러옵니다. 현재 비교 데이터 연결을 확인해 주세요.";
+    }
+  }
+}
+
 function calc(){const g=pg();if(!Number.isFinite(g))return;const a=Math.max(0,Number($("amount").value||0)),u=Number($("unit").value);$("calcValue").textContent=won(g*a*u)}
-$("amount").addEventListener("input",calc);$("unit").addEventListener("change",calc);$("calculateBtn").addEventListener("click",calc);
+if($("amount"))$("amount").addEventListener("input",calc);if($("unit"))$("unit").addEventListener("change",calc);if($("calculateBtn"))$("calculateBtn").addEventListener("click",calc);
 function renderMdd(y){const m=state.longterm?.metrics?.[y]?.silverMdd;const el=$("mdd"+y),de=$("mdd"+y+"date");if(!m){el.textContent="—";return}el.textContent=pct(m.value);el.className="down";de.textContent=`${String(m.peakDate).slice(0,10)} → ${String(m.troughDate).slice(0,10)}`}
 function drawLines(canvas, series, keys){const ctx=canvas.getContext("2d"),dpr=devicePixelRatio||1,w=canvas.clientWidth||900,h=300;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);if(!series?.length)return;const vals=series.flatMap(x=>keys.map(k=>Number(x[k])).filter(Number.isFinite));if(!vals.length)return;let min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;min-=span*.08;max+=span*.08;span=max-min;const L=42,R=12,T=15,B=25;ctx.strokeStyle="#e5e9ef";ctx.fillStyle="#7b8491";ctx.font='11px sans-serif';for(let i=0;i<4;i++){let yy=T+(h-T-B)*i/3,v=max-span*i/3;ctx.beginPath();ctx.moveTo(L,yy);ctx.lineTo(w-R,yy);ctx.stroke();ctx.fillText(v.toFixed(0),4,yy+4)}const xx=i=>L+i*(w-L-R)/Math.max(1,series.length-1),yy=v=>h-B-(v-min)/span*(h-T-B);const colors=["#596574","#b28b2e"];keys.forEach((k,ki)=>{ctx.beginPath();series.forEach((p,i)=>{const v=Number(p[k]);if(!Number.isFinite(v))return;i?ctx.lineTo(xx(i),yy(v)):ctx.moveTo(xx(i),yy(v))});ctx.strokeStyle=colors[ki];ctx.lineWidth=2.4;ctx.stroke()})}
 function renderCompare(y){const m=state.longterm?.metrics?.[y];if(!m)return;$("silverReturn").textContent=pct(m.silverReturn);$("silverReturn").className=cls(m.silverReturn);$("goldReturn").textContent=pct(m.goldReturn);$("goldReturn").className=cls(m.goldReturn);$("riskCompare").textContent=`은 MDD ${pct(m.silverMdd?.value)} · 금 MDD ${pct(m.goldMdd?.value)}`;
