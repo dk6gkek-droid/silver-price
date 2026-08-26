@@ -48,3 +48,15 @@ ETF/ETN 정보는 2026-08-26 기준 확인한 공식 자료 중심이며, 국내
 - KB 파싱 실패 시 공식 19% 판매마진 + 부가세 10% 구조 기반 예상가로 명확히 fallback
 - 메인은 100g/500g/1kg 카드 아래 중복 VAT 숫자를 제거하고 1kg 비교카드 하나만 표시
 - /api/premium은 메인 시세 표시 후 지연 호출하여 첫 화면 로딩을 막지 않음
+
+## v36 안정화 핵심
+- history/longterm이 매 요청마다 서로 다른 timestamp URL로 Gold API를 두드리던 구조 제거
+- XAG/XAU 장기 원본을 Cloudflare Cache API의 고정 cache key로 공유
+- XAG 원본 24시간 freshness, XAU 48시간 freshness
+- 원본 정상 데이터는 30일 보관하여 upstream 실패 시 stale 데이터 계속 제공
+- stale 상태에서는 사용자 응답을 즉시 반환하고 background refresh
+- refresh 실패 시 1시간 retry lock으로 API 연속 재호출 방지
+- /api/history와 /api/longterm이 같은 XAG 원본 캐시를 공유하여 호출 수 감소
+- longterm 최종 계산결과도 별도 14일 캐시, 48시간 refresh
+- 브라우저 localStorage에도 history 7일, longterm 30일 fallback
+- premium/current 기능은 기존 동작 유지

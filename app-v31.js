@@ -11,32 +11,30 @@ function render(){const g=pg(); if(Number.isFinite(g)){ $("priceDonHero").textCo
  if(Number.isFinite(state.xag))$("xagPrice").textContent="$"+state.xag.toFixed(2);if(Number.isFinite(state.fx))$("usdKrw").textContent=won(state.fx);
  if(state.hist.length){const c=state.xag||state.hist.at(-1).price;const vals=[["change1d",1],["change1w",7],["change1m",30],["change1y",365]];let snap=[];for(const [id,d] of vals){const v=change(c,nearest(d));$(id).textContent=pct(v);$(id).className=cls(v);if(d==1||d==7||d==365)snap.push(`${d==1?"오늘":d==7?"1주":"1년"} <span class="${cls(v)}">${pct(v)}</span>`)}$("snapshotText").innerHTML=snap.join(" · ")}
 }
+function saveLocal(k,v){try{localStorage.setItem(k,JSON.stringify({t:Date.now(),v}))}catch(e){}}
+function readLocal(k,maxAge){try{const x=JSON.parse(localStorage.getItem(k)||"null");return x&&Date.now()-x.t<=maxAge?x.v:null}catch(e){return null}}
 async function get(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(r.status);return r.json()}
-async function load(){try{const d=await get(API.current);state.xag=Number(d.xagUsd);state.fx=Number(d.usdKrw);$("apiStatus").textContent="실제 API 데이터";$("apiStatus").classList.add("ok");if(d.updatedAt)$("updatedAt").textContent=new Date(d.updatedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"});render();setTimeout(loadPremium,700)}catch(e){$("apiStatus").textContent="현재 시세 연결 확인 필요";setTimeout(loadPremium,700)}
- try{state.hist=normalize(await get(API.history+"?days=370"));render()}catch(e){}
- try{state.longterm=await get(API.longterm);renderLongterm()}catch(e){document.querySelectorAll('[id^="mdd"]').forEach(x=>{if(!x.id.includes("date"))x.textContent="데이터 확인 중"});$("fedSummary").textContent="장기 데이터 연결을 확인하면 자동 계산됩니다."}}
-
-async function loadPremium(){
-  const intl=pg();
-  if(Number.isFinite(intl) && $("premiumIntl")) $("premiumIntl").textContent=won(intl*1000);
-  try{
-    const d=await get(API.premium);
-    const buy=Number(d.customerBuy), pp=Number(d.premiumPct);
-    if($("premiumKbBuy")) $("premiumKbBuy").textContent=won(buy);
-    if($("premiumPct")){
-      $("premiumPct").textContent=Number.isFinite(pp)?`+${pp.toFixed(1)}%`:"—";
-    }
-    if($("premiumKbLabel")) $("premiumKbLabel").textContent=d.mode==="actual"?"KB 고객 구매가":"KB 공식구조 예상가";
-    if($("premiumSource")){
-      const dt=d.date?String(d.date).replaceAll("-","."):"";
-      $("premiumSource").textContent=d.mode==="actual"
-        ?`KB국민은행 고시 ${dt}${d.time?" "+d.time:""} · 24시간 캐시`
-        :`KB 가격조회 파싱 실패 시 공식 판매마진(19%)·부가세 구조로 계산한 예상값 · ${dt}`;
-    }
-  }catch(e){
-    if($("premiumKbBuy")) $("premiumKbBuy").textContent="잠시 후 확인";
-    if($("premiumSource")) $("premiumSource").textContent="KB 가격 비교는 메인 시세와 독립적으로 불러옵니다. 현재 비교 데이터 연결을 확인해 주세요.";
-  }
+async function getStable(u,key,maxAge){try{const d=await get(u);saveLocal(key,d);return {d,stale:false}}catch(e){const d=readLocal(key,maxAge);if(d)return {d,stale:true};throw e}}
+async function load(){
+ try{
+   const {d,stale}=await getStable(API.current,"st_current_v36",6*60*60*1000);
+   state.xag=Number(d.xagUsd);state.fx=Number(d.usdKrw);
+   $("apiStatus").textContent=stale?"최근 저장 시세 · API 재연결 대기":"실제 API 데이터";
+   if(!stale)$("apiStatus").classList.add("ok");
+   if(d.updatedAt)$("updatedAt").textContent=new Date(d.updatedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"});
+   render();setTimeout(loadPremium,700)
+ }catch(e){$("apiStatus").textContent="현재 시세 연결 확인 필요";setTimeout(loadPremium,700)}
+ try{
+   const {d}=await getStable(API.history+"?days=370","st_history_v36",7*24*60*60*1000);
+   state.hist=normalize(d);render()
+ }catch(e){}
+ try{
+   const {d}=await getStable(API.longterm,"st_longterm_v36",30*24*60*60*1000);
+   state.longterm=d;renderLongterm()
+ }catch(e){
+   document.querySelectorAll('[id^="mdd"]').forEach(x=>{if(!x.id.includes("date"))x.textContent="데이터 확인 중"});
+   $("fedSummary").textContent="장기 데이터 연결을 확인하면 자동 계산됩니다."
+ }
 }
 
 function calc(){const g=pg();if(!Number.isFinite(g))return;const a=Math.max(0,Number($("amount").value||0)),u=Number($("unit").value);$("calcValue").textContent=won(g*a*u)}
