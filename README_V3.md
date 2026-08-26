@@ -29,3 +29,11 @@ ETF/ETN 정보는 2026-08-26 기준 확인한 공식 자료 중심이며, 국내
 - 모든 HTML에서 CSS 캐시버전 업데이트
 - index.html JS 캐시버전 업데이트
 - 메인화면 모바일 UI 미세조정(상단 오늘가격 칩 제거, 최근업데이트 줄정리, 리스크 제목 줄바꿈 개선)
+
+
+## v34 콘텐츠/SEO 강화
+- 메인 1g 제거, 실버바 100g·500g·1kg 중심
+- 부가세 10% 단순 반영 비교값 추가
+- 새 페이지: silver-bar-guide.html, silver-vs-gold.html
+- risk/ETF 콘텐츠 깊이 및 FAQ/내부링크 강화
+- sitemap 확장
