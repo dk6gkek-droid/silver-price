@@ -37,3 +37,14 @@ ETF/ETN 정보는 2026-08-26 기준 확인한 공식 자료 중심이며, 국내
 - 새 페이지: silver-bar-guide.html, silver-vs-gold.html
 - risk/ETF 콘텐츠 깊이 및 FAQ/내부링크 강화
 - sitemap 확장
+
+
+## v35 SEO + KB 실버바 비교
+- silver-calculator.html: 트로이온스/돈/g 변환, 계산식, FAQ, 실물가격 차이 보강
+- silver-price-1don.html: 1돈 고유 검색의도 콘텐츠 보강
+- silver-price-1kg.html: 국제 환산가 vs KB 실버바 1kg 비교 추가
+- fed-silver-gold.html: 미국 금리인상기 금·은 비교 독립 SEO 페이지 추가
+- functions/api/premium.js: KB 실버바 가격조회 HTML 파싱, 24시간 캐시
+- KB 파싱 실패 시 공식 19% 판매마진 + 부가세 10% 구조 기반 예상가로 명확히 fallback
+- 메인은 100g/500g/1kg 카드 아래 중복 VAT 숫자를 제거하고 1kg 비교카드 하나만 표시
+- /api/premium은 메인 시세 표시 후 지연 호출하여 첫 화면 로딩을 막지 않음

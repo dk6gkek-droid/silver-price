@@ -1,17 +1,49 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="naver-site-verification" content="7abe1a38036b67a5e8ea541d7a32755246369bef" />
-<title>은값 계산기 | 은 1돈·g·kg 가격 계산</title><meta name="description" content="오늘 국제 은시세와 원달러 환율을 기준으로 은 1돈, g, kg 가격을 계산합니다."><meta name="robots" content="index,follow">
-<link rel="canonical" href="https://silver-today.com/silver-calculator.html"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="은값 계산기 | 은 1돈·g·kg 가격 계산"><meta property="og:description" content="오늘 국제 은시세와 원달러 환율을 기준으로 은 1돈, g, kg 가격을 계산합니다."><meta property="og:url" content="https://silver-today.com/silver-calculator.html"><link rel="stylesheet" href="/styles.css?v=20260826-4"></head><body>
-<header class="site-header"><div class="wrap nav"><a class="brand" href="/">오늘 <span>은시세</span></a><nav class="navlinks"><a href="/silver-risk.html">은 위험·수익률</a><a href="/silver-etf.html">은 ETF·ETN</a><a href="/silver-calculator.html">계산기</a></nav></div></header>
-<main class="wrap"><section class="hero"><h1>은값 계산기</h1><p class="lead">은 무게를 입력하면 오늘 국제 은시세와 원·달러 환율 기준의 원화 환산가격을 계산합니다.</p></section>
-<section class="section card"><div class="calc-row"><input id="a" type="number" value="1" min="0" step="0.1"><select id="u"><option value="3.75">돈</option><option value="1">g</option><option value="100">100g</option><option value="1000">kg</option></select><button id="b">계산</button></div><div class="result">환산가격 <strong id="v">시세 로딩 중</strong></div><div class="source" id="s">국제시세와 환율 연결 중</div></section>
-<section class="section"><h2>은 1돈은 몇 g인가요?</h2><p>1돈은 3.75g입니다. 국제 은시세는 트로이온스(약 31.1035g)당 미국 달러로 표시되는 경우가 많기 때문에, 이를 g 단위로 환산하고 원·달러 환율을 적용해 원화 참고가격을 계산합니다.</p><h2>실버바 실제 가격과 왜 다른가요?</h2><p>이 계산기는 국제시세 환산값입니다. 국내 실물 실버바에는 부가가치세, 제조·가공비, 유통비와 판매처 마진 등이 추가될 수 있습니다.</p></section></main>
-<footer class="footer"><div class="wrap">
-  <div class="footer-links">
-    <a href="/about.html">사이트 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/contact.html">문의</a><a href="/disclaimer.html">면책사항</a>
-  </div>
-  <strong>오늘 은시세 · Silver Today</strong><br>
-  국제 은가격과 환율을 바탕으로 한 정보 제공 서비스입니다. 투자 권유가 아닙니다.
-</div></footer>
+<title>은값 계산기 | 1돈·g·100g·500g·1kg 은가격 계산</title>
+<meta name="description" content="오늘 국제 은시세와 환율로 은 1돈, g, 100g, 500g, 1kg 가격을 계산하고 트로이온스 환산법과 실버바 실제가격 차이까지 확인하세요.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://silver-today.com/silver-calculator.html">
+<link rel="stylesheet" href="/styles.css?v=20260826-5"></head><body>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="/">오늘 <span>은시세</span></a><nav class="navlinks"><a href="/silver-risk.html">은 위험·수익률</a><a href="/silver-etf.html">은 ETF·ETN</a><a href="/silver-bar-guide.html">실버바</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><div class="kicker">SILVER CALCULATOR</div><h1>은값 계산기</h1><p class="lead">은 무게를 입력하면 오늘 국제 은시세와 원·달러 환율 기준의 원화 환산가격을 계산합니다.</p></section>
 
-<script>let g=null;const $=x=>document.getElementById(x),won=n=>Math.round(n).toLocaleString("ko-KR")+"원";function c(){if(!g)return;$("v").textContent=won(g*Math.max(0,Number($("a").value||0))*Number($("u").value))}fetch("/api/current").then(r=>r.json()).then(d=>{g=Number(d.xagUsd)*Number(d.usdKrw)/31.1034768;$("s").textContent=`국제 은 $${Number(d.xagUsd).toFixed(2)}/oz · USD/KRW ${Math.round(Number(d.usdKrw)).toLocaleString("ko-KR")}원`;c()});["a","u"].forEach(id=>$(id).addEventListener("input",c));$("b").onclick=c;</script></body></html>
+<section class="section card">
+<div class="calc-row"><input id="a" type="number" value="1" min="0" step="0.1" aria-label="은 수량"><select id="u" aria-label="은 단위"><option value="3.75">돈</option><option value="1">g</option><option value="100">100g</option><option value="500">500g</option><option value="1000">1kg</option><option value="31.1034768">트로이온스(oz)</option></select><button id="b">계산</button></div>
+<div class="result">국제시세 환산가격 <strong id="v">시세 로딩 중</strong></div><div class="source" id="s">국제시세와 환율 연결 중</div>
+</section>
+
+<section class="section"><h2>자주 계산하는 은 무게</h2><div class="quick-convert">
+<div class="cell"><span>1돈</span><strong>3.75g</strong></div>
+<div class="cell"><span>100g</span><strong>약 26.67돈</strong></div>
+<div class="cell"><span>500g</span><strong>약 133.33돈</strong></div>
+<div class="cell"><span>1kg</span><strong>약 266.67돈</strong></div>
+</div></section>
+
+<section class="section"><h2>은 1돈 가격은 어떻게 계산할까?</h2>
+<p>국제 은가격은 보통 <strong>1 트로이온스(Troy ounce)</strong>당 미국 달러로 표시됩니다. 1 트로이온스는 31.1034768g이고, 한국에서 사용하는 1돈은 3.75g입니다.</p>
+<div class="formula">원화 g당 은가격 = XAG/USD × USD/KRW ÷ 31.1034768<br>은 1돈 가격 = 원화 g당 은가격 × 3.75</div>
+<p>따라서 국제 은가격뿐 아니라 원·달러 환율이 오르면 원화 기준 은가격도 높아질 수 있습니다.</p></section>
+
+<section class="section"><h2>계산기 가격과 실버바 판매가격이 다른 이유</h2>
+<div class="step-list">
+<div class="step"><strong>국제 은가격을 원화로 환산</strong><p>이 계산기가 보여주는 기본값입니다.</p></div>
+<div class="step"><strong>실물 구매에는 부가세가 추가</strong><p>국내 실버바 고객 매입가격에는 부가가치세가 반영됩니다.</p></div>
+<div class="step"><strong>판매마진·제조·유통비가 더해질 수 있음</strong><p>그래서 실제 실버바 1kg 가격은 단순 국제 환산가격보다 높게 형성될 수 있습니다.</p></div>
+</div>
+<div class="read-next"><a class="chip" href="/silver-bar-guide.html">국제가격 vs 실버바 실제가격 →</a><a class="chip" href="/silver-price-1kg.html">오늘 은 1kg 가격 →</a></div>
+</section>
+
+<section class="section faq"><h2>은값 계산 FAQ</h2>
+<details><summary>1kg은 몇 돈인가요?</summary><p>1돈이 3.75g이므로 1,000g ÷ 3.75g = 약 266.67돈입니다.</p></details>
+<details><summary>1 트로이온스는 몇 g인가요?</summary><p>귀금속 국제가격에서 사용하는 1 트로이온스는 31.1034768g입니다. 일반적인 온스(약 28.35g)와 다릅니다.</p></details>
+<details><summary>계산값에 부가세가 포함되어 있나요?</summary><p>아닙니다. 기본 계산값은 국제 은가격과 환율을 이용한 이론적 원화 환산값입니다. 실물 구매가는 별도로 확인해야 합니다.</p></details>
+</section>
+</main>
+<footer class="footer"><div class="wrap"><div class="footer-links"><a href="/about.html">사이트 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/contact.html">문의</a><a href="/disclaimer.html">면책사항</a></div><strong>오늘 은시세 · Silver Today</strong><br>국제 은가격과 환율을 바탕으로 한 정보 제공 서비스입니다.</div></footer>
+<script>
+let g=null;const $=x=>document.getElementById(x),won=n=>Number.isFinite(n)?Math.round(n).toLocaleString("ko-KR")+"원":"—";
+function c(){if(!g)return;$("v").textContent=won(g*Math.max(0,Number($("a").value||0))*Number($("u").value))}
+fetch("/api/current").then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{g=Number(d.xagUsd)*Number(d.usdKrw)/31.1034768;$("s").textContent=`국제 은 $${Number(d.xagUsd).toFixed(2)}/oz · USD/KRW ${Math.round(Number(d.usdKrw)).toLocaleString("ko-KR")}원`;c()}).catch(()=>$("s").textContent="현재 시세 연결을 확인해 주세요.");
+["a","u"].forEach(id=>$(id).addEventListener("input",c));$("b").onclick=c;
+</script></body></html>

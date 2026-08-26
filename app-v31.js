@@ -1,4 +1,4 @@
-const API={current:"/api/current",history:"/api/history",longterm:"/api/longterm"};
+const API={current:"/api/current",history:"/api/history",longterm:"/api/longterm",premium:"/api/premium"};
 const state={xag:null,fx:null,hist:[],longterm:null}; const OZ=31.1034768;
 const $=id=>document.getElementById(id); const won=n=>Number.isFinite(n)?Math.round(n).toLocaleString("ko-KR")+"원":"—";
 const pct=n=>Number.isFinite(n)?`${n>=0?"+":""}${n.toFixed(2)}%`:"—";
@@ -7,14 +7,38 @@ function pg(){return Number.isFinite(state.xag)&&Number.isFinite(state.fx)?state
 function nearest(days){if(!state.hist.length)return null;const t=Date.now()-days*86400000;let b=null,d=Infinity;for(const p of state.hist){const q=Math.abs(new Date(p.date)-t);if(q<d){b=p.price;d=q}}return b}
 function change(cur,old){return Number.isFinite(cur)&&Number.isFinite(old)&&old?((cur/old)-1)*100:null}
 function normalize(a){return Array.isArray(a)?a.map(r=>({date:r.day||r.date||r.timestamp||r.time,price:Number(r.avg_price??r.price??r.close??r.max_price)})).filter(x=>x.date&&Number.isFinite(x.price)).sort((a,b)=>new Date(a.date)-new Date(b.date)):[]}
-function render(){const g=pg(); if(Number.isFinite(g)){ $("priceDonHero").textContent=won(g*3.75);$("price100g").textContent=won(g*100);$("price500g").textContent=won(g*500);$("price1kg").textContent=won(g*1000);if($("price100gVat"))$("price100gVat").textContent=won(g*100*1.10);if($("price500gVat"))$("price500gVat").textContent=won(g*500*1.10);if($("price1kgVat"))$("price1kgVat").textContent=won(g*1000*1.10);calc()}
+function render(){const g=pg(); if(Number.isFinite(g)){ $("priceDonHero").textContent=won(g*3.75);$("price100g").textContent=won(g*100);$("price500g").textContent=won(g*500);$("price1kg").textContent=won(g*1000);calc()}
  if(Number.isFinite(state.xag))$("xagPrice").textContent="$"+state.xag.toFixed(2);if(Number.isFinite(state.fx))$("usdKrw").textContent=won(state.fx);
  if(state.hist.length){const c=state.xag||state.hist.at(-1).price;const vals=[["change1d",1],["change1w",7],["change1m",30],["change1y",365]];let snap=[];for(const [id,d] of vals){const v=change(c,nearest(d));$(id).textContent=pct(v);$(id).className=cls(v);if(d==1||d==7||d==365)snap.push(`${d==1?"오늘":d==7?"1주":"1년"} <span class="${cls(v)}">${pct(v)}</span>`)}$("snapshotText").innerHTML=snap.join(" · ")}
 }
 async function get(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(r.status);return r.json()}
-async function load(){try{const d=await get(API.current);state.xag=Number(d.xagUsd);state.fx=Number(d.usdKrw);$("apiStatus").textContent="실제 API 데이터";$("apiStatus").classList.add("ok");if(d.updatedAt)$("updatedAt").textContent=new Date(d.updatedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"});render()}catch(e){$("apiStatus").textContent="현재 시세 연결 확인 필요"}
+async function load(){try{const d=await get(API.current);state.xag=Number(d.xagUsd);state.fx=Number(d.usdKrw);$("apiStatus").textContent="실제 API 데이터";$("apiStatus").classList.add("ok");if(d.updatedAt)$("updatedAt").textContent=new Date(d.updatedAt).toLocaleString("ko-KR",{timeZone:"Asia/Seoul"});render();setTimeout(loadPremium,700)}catch(e){$("apiStatus").textContent="현재 시세 연결 확인 필요";setTimeout(loadPremium,700)}
  try{state.hist=normalize(await get(API.history+"?days=370"));render()}catch(e){}
  try{state.longterm=await get(API.longterm);renderLongterm()}catch(e){document.querySelectorAll('[id^="mdd"]').forEach(x=>{if(!x.id.includes("date"))x.textContent="데이터 확인 중"});$("fedSummary").textContent="장기 데이터 연결을 확인하면 자동 계산됩니다."}}
+
+async function loadPremium(){
+  const intl=pg();
+  if(Number.isFinite(intl) && $("premiumIntl")) $("premiumIntl").textContent=won(intl*1000);
+  try{
+    const d=await get(API.premium);
+    const buy=Number(d.customerBuy), pp=Number(d.premiumPct);
+    if($("premiumKbBuy")) $("premiumKbBuy").textContent=won(buy);
+    if($("premiumPct")){
+      $("premiumPct").textContent=Number.isFinite(pp)?`+${pp.toFixed(1)}%`:"—";
+    }
+    if($("premiumKbLabel")) $("premiumKbLabel").textContent=d.mode==="actual"?"KB 고객 구매가":"KB 공식구조 예상가";
+    if($("premiumSource")){
+      const dt=d.date?String(d.date).replaceAll("-","."):"";
+      $("premiumSource").textContent=d.mode==="actual"
+        ?`KB국민은행 고시 ${dt}${d.time?" "+d.time:""} · 24시간 캐시`
+        :`KB 가격조회 파싱 실패 시 공식 판매마진(19%)·부가세 구조로 계산한 예상값 · ${dt}`;
+    }
+  }catch(e){
+    if($("premiumKbBuy")) $("premiumKbBuy").textContent="잠시 후 확인";
+    if($("premiumSource")) $("premiumSource").textContent="KB 가격 비교는 메인 시세와 독립적으로 불러옵니다. 현재 비교 데이터 연결을 확인해 주세요.";
+  }
+}
+
 function calc(){const g=pg();if(!Number.isFinite(g))return;const a=Math.max(0,Number($("amount").value||0)),u=Number($("unit").value);$("calcValue").textContent=won(g*a*u)}
 $("amount").addEventListener("input",calc);$("unit").addEventListener("change",calc);$("calculateBtn").addEventListener("click",calc);
 function renderMdd(y){const m=state.longterm?.metrics?.[y]?.silverMdd;const el=$("mdd"+y),de=$("mdd"+y+"date");if(!m){el.textContent="—";return}el.textContent=pct(m.value);el.className="down";de.textContent=`${String(m.peakDate).slice(0,10)} → ${String(m.troughDate).slice(0,10)}`}
