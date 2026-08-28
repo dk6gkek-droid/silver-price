@@ -1,19 +1,19 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="naver-site-verification" content="7abe1a38036b67a5e8ea541d7a32755246369bef" />
-<title>은값 계산기 | 1돈·g·100g·500g·1kg 은가격 계산</title>
-<meta name="description" content="오늘 국제 은시세와 환율로 은 1돈, g, 100g, 500g, 1kg 가격을 계산하고 트로이온스 환산법과 실버바 실제가격 차이까지 확인하세요.">
+<title>오늘 은 시세 계산기 | 1g·1돈·100g·500g·1kg</title>
+<meta name="description" content="오늘 은 시세 계산기에서 1g·1돈(3.75g)·100g·500g·1kg 가격을 국제 은 시세와 환율 기준으로 바로 계산하세요. 실버바 실제가격 차이도 설명합니다.">
 <meta name="robots" content="index,follow"><link rel="canonical" href="https://silver-today.com/silver-calculator.html">
-<link rel="stylesheet" href="/styles.css?v=20260826-6"></head><body>
+<link rel="stylesheet" href="/styles.css?v=20260828-42"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"오늘 은 시세 계산기","url":"https://silver-today.com/silver-calculator.html","description":"국제 은 시세와 원·달러 환율을 기준으로 1g, 1돈, 100g, 500g, 1kg 은 가격을 계산하는 도구입니다.","inLanguage":"ko-KR"}</script></head><body>
 <header class="site-header"><div class="wrap nav"><a class="brand" href="/">오늘 <span>은시세</span></a><nav class="navlinks"><a href="/silver-risk.html">은 위험·수익률</a><a href="/silver-etf.html">은 ETF·ETN</a><a href="/silver-bar-guide.html">실버바</a></nav></div></header>
 <main class="wrap">
-<section class="hero"><div class="kicker">SILVER CALCULATOR</div><h1>은값 계산기</h1><p class="lead">은 무게를 입력하면 오늘 국제 은시세와 원·달러 환율 기준의 원화 환산가격을 계산합니다.</p></section>
+<section class="hero"><div class="kicker">SILVER CALCULATOR</div><h1>오늘 은 시세 계산기</h1><p class="lead">은 무게를 입력하면 오늘 국제 은시세와 원·달러 환율 기준의 원화 환산가격을 계산합니다.</p></section>
 
 <section class="section card">
 <div class="calc-row"><input id="a" type="number" value="1" min="0" step="0.1" aria-label="은 수량"><select id="u" aria-label="은 단위"><option value="3.75">돈</option><option value="1">g</option><option value="100">100g</option><option value="500">500g</option><option value="1000">1kg</option><option value="31.1034768">트로이온스(oz)</option></select><button id="b">계산</button></div>
 <div class="result">국제시세 환산가격 <strong id="v">시세 로딩 중</strong></div><div class="source" id="s">국제시세와 환율 연결 중</div>
 </section>
 
-<section class="section"><h2>자주 계산하는 은 무게</h2><div class="quick-convert">
+<section class="section"><h2>은 1g·1돈·100g·500g·1kg 단위</h2><div class="quick-convert">
 <div class="cell"><span>1돈</span><strong>3.75g</strong></div>
 <div class="cell"><span>100g</span><strong>약 26.67돈</strong></div>
 <div class="cell"><span>500g</span><strong>약 133.33돈</strong></div>
@@ -41,9 +41,4 @@
 </section>
 </main>
 <footer class="footer"><div class="wrap"><div class="footer-links"><a href="/about.html">사이트 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/contact.html">문의</a><a href="/disclaimer.html">면책사항</a></div><strong>오늘 은시세 · Silver Today</strong><br>국제 은가격과 환율을 바탕으로 한 정보 제공 서비스입니다.</div></footer>
-<script>
-let g=null;const $=x=>document.getElementById(x),won=n=>Number.isFinite(n)?Math.round(n).toLocaleString("ko-KR")+"원":"—";
-function c(){if(!g)return;$("v").textContent=won(g*Math.max(0,Number($("a").value||0))*Number($("u").value))}
-fetch("/api/current").then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{g=Number(d.xagUsd)*Number(d.usdKrw)/31.1034768;$("s").textContent=`국제 은 $${Number(d.xagUsd).toFixed(2)}/oz · USD/KRW ${Math.round(Number(d.usdKrw)).toLocaleString("ko-KR")}원`;c()}).catch(()=>$("s").textContent="현재 시세 연결을 확인해 주세요.");
-["a","u"].forEach(id=>$(id).addEventListener("input",c));$("b").onclick=c;
-</script></body></html>
+<script>let g=null;const $=x=>document.getElementById(x),won=n=>Number.isFinite(n)?Math.round(n).toLocaleString("ko-KR")+"원":"—";function c(){if(!g)return;$("v").textContent=won(g*Math.max(0,Number($("a").value||0))*Number($("u").value))}function setGrams(grams){const n=Number(grams);if(!Number.isFinite(n)||n<=0)return;if(n===3.75){$("a").value="1";$("u").value="3.75"}else if([100,500,1000].includes(n)){$("a").value="1";$("u").value=String(n)}else{$("a").value=String(n);$("u").value="1"}c();document.querySelectorAll("[data-calc-grams]").forEach(b=>b.classList.toggle("active",Number(b.dataset.calcGrams)===n));}fetch("/api/current").then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{g=Number(d.xagUsd)*Number(d.usdKrw)/31.1034768;$("s").textContent=`국제 은 $${Number(d.xagUsd).toFixed(2)}/oz · USD/KRW ${Math.round(Number(d.usdKrw)).toLocaleString("ko-KR")}원`;c()}).catch(()=>$("s").textContent="현재 시세 연결을 확인해 주세요.");["a","u"].forEach(id=>$(id).addEventListener("input",c));$("b").onclick=c;document.querySelectorAll("[data-calc-grams]").forEach(btn=>btn.addEventListener("click",()=>setGrams(btn.dataset.calcGrams)));const q=new URLSearchParams(location.search).get("grams");if(q)setGrams(q);</script></body></html>
