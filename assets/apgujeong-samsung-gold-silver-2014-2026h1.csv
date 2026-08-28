@@ -1,0 +1,5 @@
+asset,baseline_period,baseline_value,current_period,current_value,ratio,cumulative_change_pct,one_hundred_million_equiv,method
+압구정현대1차_131sqm,2014_annual_avg_135sqm_bucket_억원,15.32,2026_H1_avg_4_transactions_억원,66.75,4.3570,335.7,4.36,"DAPT/MOLIT actual transactions; exact 131.48-131.49㎡; 2026 H1 trades 70,71,65,61억"
+삼성전자,2014_avg_monthly_price_split_adjusted_KRW,25832.43,2026_H1_avg_of_monthly_avg_close_KRW,223695.73,8.6595,765.9,8.66,"2014 Samsung business reports; 50:1 split adjusted; 2026 daily close data aggregated by month"
+금,2014_estimated_avg_KRW_per_g,42902.01,2026_H1_avg_monthly_KRW_per_g,223439.00,5.2081,420.8,5.21,"2014 StatMuse avg USD/oz x avg USDKRW / 31.1034768; 2026 Exchange-Rates monthly KRW averages"
+은,2014_estimated_avg_KRW_per_g,646.12,2026_H1_avg_monthly_KRW_per_g,3734.15,5.7794,477.9,5.78,"2014 StatMuse avg USD/oz x avg USDKRW / 31.1034768; 2026 Exchange-Rates monthly KRW averages"
