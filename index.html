@@ -1,77 +1,100 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="naver-site-verification" content="7abe1a38036b67a5e8ea541d7a32755246369bef" />
-<title>오늘 은시세 | 실버바 100g·500g·1kg 가격·최대낙폭·은 ETF</title><meta name="description" content="오늘 은 1돈과 실버바 100g·500g·1kg 환산가격, 부가세 체감가, 은 최대낙폭, 금·은 장기수익률과 ETF 정보를 확인하세요."><meta name="robots" content="index,follow">
-<link rel="canonical" href="https://silver-today.com/"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="오늘 은시세 | 실버바 100g·500g·1kg 가격·최대낙폭·은 ETF"><meta property="og:description" content="오늘 은 1돈과 실버바 100g·500g·1kg 환산가격, 부가세 체감가, 은 최대낙폭, 금·은 장기수익률과 ETF 정보를 확인하세요."><meta property="og:url" content="https://silver-today.com/"><link rel="stylesheet" href="/styles.css?v=20260828-39"></head><body class="home-page">
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="7abe1a38036b67a5e8ea541d7a32755246369bef" name="naver-site-verification">
+<title>오늘 은시세 | 실버바 100g·500g·1kg 가격·최대낙폭·은 ETF</title><meta content="오늘 은 1돈과 실버바 100g·500g·1kg 환산가격, KB 실버바 실제 구매가격 차이, 최근 1년 가격 위치, 은 최대낙폭과 ETF 정보를 확인하세요." name="description"/><meta content="index,follow" name="robots"/>
+<link href="https://silver-today.com/" rel="canonical"/><meta content="website" property="og:type"/><meta content="ko_KR" property="og:locale"/><meta content="오늘 은시세 | 실버바 100g·500g·1kg 가격·최대낙폭·은 ETF" property="og:title"/><meta content="오늘 은 1돈과 실버바 100g·500g·1kg 환산가격, KB 실버바 실제 구매가격 차이, 최근 1년 가격 위치, 은 최대낙폭과 ETF 정보를 확인하세요." property="og:description"/><meta content="https://silver-today.com/" property="og:url"/><link href="/styles.css?v=20260828-40" rel="stylesheet"/></meta></head><body class="home-page">
 <header class="site-header"><div class="wrap nav"><a class="brand" href="/">오늘 <span>은시세</span></a><nav class="navlinks"><a href="/silver-risk.html">은 위험·수익률</a><a href="/wall-street-indicators.html">월가 지표</a><a href="/silver-etf.html">은 ETF·ETN</a><a href="/silver-calculator.html">계산기</a></nav></div></header>
 <main class="wrap">
-<section class="hero home-hero"><div class="hero-kicker"><span class="hero-kicker-dot"></span>SILVER TODAY · LIVE MARKET</div><h1>오늘 은값,<br>가격부터 위험까지 한눈에</h1><p class="lead">국제 은시세를 원화로 환산하고, 장기 최대낙폭·금과의 비교·은 투자상품까지 함께 봅니다.</p><div class="hero-note">현재 시세는 최대 1시간, 기간별 통계는 하루~이틀 간격으로 갱신되며 이전 정상 데이터를 보존합니다 · 국제시세 환산 참고가격 · 실물 거래가는 부가세·공임 등으로 달라질 수 있습니다.</div>
+<section class="hero home-hero"><div class="hero-kicker"><span class="hero-kicker-dot"></span>SILVER TODAY · LIVE MARKET</div><h1>오늘 은값,<br/>가격부터 위험까지 한눈에</h1><p class="lead">국제 은시세를 원화로 환산하고, 장기 최대낙폭·금과의 비교·은 투자상품까지 함께 봅니다.</p><div class="hero-note">현재 시세는 최대 1시간, 기간별 통계는 하루~이틀 간격으로 갱신되며 이전 정상 데이터를 보존합니다 · 국제시세 환산 참고가격 · 실물 거래가는 부가세·공임 등으로 달라질 수 있습니다.</div>
 <nav class="chips"><a class="chip" href="#risk">최대낙폭</a><a class="chip" href="#gold-silver">금 vs 은</a><a class="chip" href="#fed">미국 금리인상기</a><a class="chip" href="/wall-street-indicators.html">월가 지표</a><a class="chip" href="/silver-etf.html">은 ETF·ETN</a><a class="chip" href="#calculator">계산기</a></nav></section>
-
-<section id="today" class="grid home-today">
-<article class="card wide market-card"><div class="eyebrow">오늘의 은 가격 · 원화 환산</div><div class="price-hero"><div class="soft"><div class="label">은 1돈 · 3.75g</div><div id="priceDonHero" class="big">불러오는 중</div><div class="small muted">국제 은가격 × 원·달러 환율 · 부가세/공임 미포함</div></div><div class="soft"><div class="label">오늘 한눈에</div><div id="snapshotText" class="value" style="font-size:18px">변동률 계산 중</div><div id="apiStatus" class="api-status">데이터 연결 중</div></div></div>
+<section class="grid home-today" id="today">
+<article class="card wide market-card"><div class="eyebrow">오늘의 은 가격 · 원화 환산</div><div class="price-hero"><div class="soft"><div class="label">은 1돈 · 3.75g</div><div class="big" id="priceDonHero">불러오는 중</div><div class="small muted">국제 은가격 × 원·달러 환율 · 부가세/공임 미포함</div></div><div class="soft"><div class="label">오늘 한눈에</div><div class="value" id="snapshotText" style="font-size:18px">변동률 계산 중</div><div class="api-status" id="apiStatus">데이터 연결 중</div></div></div>
 <div class="metrics"><div class="metric"><small>1일</small><strong id="change1d">—</strong></div><div class="metric"><small>1주</small><strong id="change1w">—</strong></div><div class="metric"><small>1개월</small><strong id="change1m">—</strong></div><div class="metric"><small>1년</small><strong id="change1y">—</strong></div></div>
 <div class="bar-section"><div class="section-head"><div><div class="label">실버바 기준 환산가격</div><div class="small muted">국내에서 많이 보는 100g · 500g · 1kg 기준</div></div><a class="chip" href="/silver-bar-guide.html">실버바 가격 구조 →</a></div>
 <div class="bar-grid">
-  <div class="bar-card"><div class="bar-name">실버바 100g</div><div id="price100g" class="bar-spot">—</div></div>
-  <div class="bar-card"><div class="bar-name">실버바 500g</div><div id="price500g" class="bar-spot">—</div></div>
-  <div class="bar-card"><div class="bar-name">실버바 1kg</div><div id="price1kg" class="bar-spot">—</div></div>
+<div class="bar-card"><div class="bar-name">실버바 100g</div><div class="bar-spot" id="price100g">—</div></div>
+<div class="bar-card"><div class="bar-name">실버바 500g</div><div class="bar-spot" id="price500g">—</div></div>
+<div class="bar-card"><div class="bar-name">실버바 1kg</div><div class="bar-spot" id="price1kg">—</div></div>
 </div>
 <div class="premium-card" id="kbPremiumCard">
-  <div class="premium-head"><div><div class="eyebrow">1KG REAL-WORLD CHECK</div><h3>국제가격 vs KB 실버바 1kg</h3></div><a class="chip" href="/silver-bar-guide.html">왜 이렇게 차이날까? →</a></div>
-  <div class="premium-grid">
-    <div class="premium-cell"><span>국제시세 환산 1kg</span><strong id="premiumIntl">—</strong></div>
-    <div class="premium-cell"><span id="premiumKbLabel">KB 고객 구매가</span><strong id="premiumKbBuy">확인 중</strong></div>
-    <div class="premium-cell premium-highlight"><span>국제가격 대비 차이</span><strong id="premiumPct">—</strong></div>
-  </div>
-  <div class="source" id="premiumSource">페이지 표시 후 KB 가격을 별도로 확인합니다. 메인 시세 로딩과 분리되어 있습니다.</div>
+<div class="premium-head"><div><div class="eyebrow">1KG REAL-WORLD CHECK</div><h3>국제가격 vs KB 실버바 1kg</h3></div><a class="chip" href="/silver-bar-guide.html">왜 이렇게 차이날까? →</a></div>
+<div class="premium-grid">
+<div class="premium-cell"><span>국제시세 환산 1kg</span><strong id="premiumIntl">—</strong></div>
+<div class="premium-cell"><span id="premiumKbLabel">KB 고객 구매가</span><strong id="premiumKbBuy">확인 중</strong></div>
+<div class="premium-cell premium-highlight"><span>국제가격 대비 차이</span><strong id="premiumPct">—</strong></div>
+</div>
+<div aria-label="실버바 1kg 구매비용 구성 비교" class="cost-ladder">
+<div class="cost-ladder-head"><strong>1kg 구매가격은 어떻게 구성될까?</strong><span>같은 은 1kg을 기준으로 비교</span></div>
+<div class="cost-row"><div class="cost-meta"><span>국제 은 가치</span><strong id="costIntl">—</strong></div><div class="cost-track"><i id="costIntlBar"></i></div><small>국제시세 환산</small></div>
+<div class="cost-row"><div class="cost-meta"><span>VAT 포함 이론가</span><strong id="costVat">—</strong></div><div class="cost-track"><i id="costVatBar"></i></div><small>국제 환산가 × 1.10</small></div>
+<div class="cost-row cost-row-real"><div class="cost-meta"><span id="costRealLabel">KB 고객 구매가</span><strong id="costReal">—</strong></div><div class="cost-track"><i id="costRealBar"></i></div><small id="costExtra">실제 구매가격 확인 중</small></div>
+</div><div class="source" id="premiumSource">페이지 표시 후 KB 가격을 별도로 확인합니다. 메인 시세 로딩과 분리되어 있습니다.</div>
 </div>
 </div>
 <div class="source source-inline"><span class="source-row">국제 은시세 <strong id="xagPrice">—</strong>/oz · USD/KRW <strong id="usdKrw">—</strong></span><span class="source-row">최근 업데이트 <span id="updatedAt">—</span></span></div></article>
+</section><section class="section pulse-section" id="market-pulse">
+<div class="section-head"><div><div class="eyebrow">TODAY'S SILVER PULSE</div><h2>오늘 은, 숫자보다 먼저 이것만 보세요</h2></div><a class="quiet-link" href="/silver-price-1kg.html">1kg 가격 자세히 →</a></div>
+<div class="pulse-grid">
+<article class="pulse-card brief-card">
+<span class="pulse-label">오늘의 은 한눈에</span>
+<div class="brief-grid">
+<div><small>은 1돈</small><strong id="briefDon">—</strong></div>
+<div><small>은 1kg</small><strong id="briefKg">—</strong></div>
+<div><small>최근 1개월</small><strong id="briefMonth">—</strong></div>
+<div><small>실물 가격차</small><strong id="briefPremium">—</strong></div>
+</div>
+<p class="brief-sentence" id="briefSentence">시세와 기간별 데이터를 연결해 오늘의 핵심 흐름을 정리합니다.</p>
+</article>
+<article class="pulse-card range-card">
+<div class="range-title"><div><span class="pulse-label">최근 1년 국제 은가격 범위</span><strong id="rangePositionText">위치 계산 중</strong></div><span class="range-badge" id="rangeBadge">XAG/USD</span></div>
+<div class="range-scale"><div class="range-line"><i id="rangeFill"></i><b aria-hidden="true" id="rangeDot"></b></div><div class="range-axis"><span>저가 <strong id="rangeLow">—</strong></span><span>현재 <strong id="rangeNow">—</strong></span><span>고가 <strong id="rangeHigh">—</strong></span></div></div>
+<p class="range-interpret" id="rangeInterpret">최근 1년 데이터를 불러오면 현재 가격이 어느 구간에 있는지 보여줍니다.</p>
+</article>
+</div>
 </section>
-
-<section class="section story-section"><div class="kicker">WHY SILVER TODAY</div><h2>은값 숫자 하나보다, 실제 투자자가 궁금한 다음 질문까지</h2><div class="insight-strip"><a class="insight" href="/silver-bar-guide.html"><strong>실버바 실제 구매가는 왜 더 비쌀까?</strong><span>국제시세 → 부가세 10% → 판매마진 구조</span></a><a class="insight" href="/silver-risk.html"><strong>은은 과거에 얼마나 크게 빠졌을까?</strong><span>5·10·20년 최대낙폭과 고점·저점</span></a><a class="insight" href="/silver-vs-gold.html"><strong>금과 은, 장기 보유 결과는 달랐을까?</strong><span>수익률뿐 아니라 MDD까지 같은 기준으로 비교</span></a></div></section><section class="section wallstreet-cta-wrap"><a class="wallstreet-feature" href="/wall-street-indicators.html"><div><span class="wallstreet-label">월가 지표 7가지</span><strong>금·은 가격과 함께 보는 시장 지표</strong><span>금은비 · 실질금리 · 달러 · CFTC · ETF 흐름 · 은 재고</span></div><b>월가 지표 보기 →</b></a></section><section id="risk" class="section risk-section home-panel"><div class="section-head"><div><div class="eyebrow">SILVER RISK</div><h2>은은 과거에 얼마나 크게 <span class="keep-word">떨어졌을까?</span></h2></div><a class="chip" href="/silver-risk.html">자세히 보기 →</a></div>
+<section class="section story-section"><div class="kicker">WHY SILVER TODAY</div><h2>은값 숫자 하나보다, 실제 투자자가 궁금한 다음 질문까지</h2><div class="insight-strip"><a class="insight" href="/silver-bar-guide.html"><strong>실버바 실제 구매가는 왜 더 비쌀까?</strong><span>국제시세 → 부가세 10% → 판매마진 구조</span></a><a class="insight" href="/silver-risk.html"><strong>은은 과거에 얼마나 크게 빠졌을까?</strong><span>5·10·20년 최대낙폭과 고점·저점</span></a><a class="insight" href="/silver-vs-gold.html"><strong>금과 은, 장기 보유 결과는 달랐을까?</strong><span>수익률뿐 아니라 MDD까지 같은 기준으로 비교</span></a></div></section><section class="section wallstreet-cta-wrap"><a class="wallstreet-feature" href="/wall-street-indicators.html"><div><span class="wallstreet-label">월가 지표 7가지</span><strong>금·은 가격과 함께 보는 시장 지표</strong><span>금은비 · 실질금리 · 달러 · CFTC · ETF 흐름 · 은 재고</span></div><b>월가 지표 보기 →</b></a></section><section class="section risk-section home-panel" id="risk"><div class="section-head"><div><div class="eyebrow">SILVER RISK</div><h2>은은 과거에 얼마나 크게 <span class="keep-word">떨어졌을까?</span></h2></div><a class="chip" href="/silver-risk.html">자세히 보기 →</a></div>
 <p>최대낙폭(MDD)은 특정 기간의 고점에서 이후 저점까지 가장 크게 하락한 비율입니다. 수익률과 함께 보면 은의 변동성을 더 현실적으로 이해할 수 있습니다.</p>
-<div class="risk-cards"><div class="risk"><span class="label">최근 5년 최대낙폭</span><strong id="mdd5">계산 중</strong><span id="mdd5date" class="small muted">—</span></div><div class="risk"><span class="label">최근 10년 최대낙폭</span><strong id="mdd10">계산 중</strong><span id="mdd10date" class="small muted">—</span></div><div class="risk"><span class="label">최근 20년 최대낙폭</span><strong id="mdd20">계산 중</strong><span id="mdd20date" class="small muted">—</span></div></div>
+<div class="risk-cards"><div class="risk"><span class="label">최근 5년 최대낙폭</span><strong id="mdd5">계산 중</strong><span class="small muted" id="mdd5date">—</span></div><div class="risk"><span class="label">최근 10년 최대낙폭</span><strong id="mdd10">계산 중</strong><span class="small muted" id="mdd10date">—</span></div><div class="risk"><span class="label">최근 20년 최대낙폭</span><strong id="mdd20">계산 중</strong><span class="small muted" id="mdd20date">—</span></div></div>
 <div class="method-note">계산 기준: XAG/USD 일별 평균가격에서 각 기간의 이전 고점 대비 이후 저점의 최대 하락률을 계산합니다. 데이터 빈도·종가/평균가 기준에 따라 다른 사이트와 수치가 조금 다를 수 있습니다. <a href="/silver-risk.html" style="text-decoration:underline">계산법 자세히 보기</a></div></section>
-
-<section id="gold-silver" class="section compare-section home-panel"><div class="section-head"><div><div class="eyebrow">GOLD VS SILVER</div><h2>20년간 금과 은, 누가 더 올랐을까?</h2></div><div class="tabs"><button class="tab compare-range" data-years="5">5년</button><button class="tab compare-range" data-years="10">10년</button><button class="tab compare-range active" data-years="20">20년</button></div></div>
+<section class="section compare-section home-panel" id="gold-silver"><div class="section-head"><div><div class="eyebrow">GOLD VS SILVER</div><h2>20년간 금과 은, 누가 더 올랐을까?</h2></div><div class="tabs"><button class="tab compare-range" data-years="5">5년</button><button class="tab compare-range" data-years="10">10년</button><button class="tab compare-range active" data-years="20">20년</button></div></div>
 <div class="risk-cards"><div class="risk"><span class="label">은 누적 변화</span><strong id="silverReturn">—</strong></div><div class="risk"><span class="label">금 누적 변화</span><strong id="goldReturn">—</strong></div><div class="risk"><span class="label">변동성 힌트</span><strong id="riskCompare" style="font-size:18px">—</strong></div></div>
-<div class="read-next"><a class="chip" href="/silver-vs-gold.html">금 vs 은 비교 해설 읽기 →</a></div><div class="chartbox"><canvas id="compareChart" aria-label="금과 은 장기 누적수익률 비교 차트"></canvas><div class="legend"><span><i class="dot silver"></i>은</span><span><i class="dot gold"></i>금</span><span>시작값=100</span></div></div></section>
-
-<section id="fed" class="section fed-section home-panel"><div class="eyebrow">FED RATE-HIKE CYCLES</div><h2>미국 금리인상기, 금과 은은 어떻게 움직였을까?</h2><p>각 금리인상 사이클 시작값을 100으로 맞춰 금·은의 가격 변화를 비교합니다. “금리 인상 = 귀금속 무조건 하락”이라는 단순한 가정이 실제로 맞았는지 확인할 수 있습니다.</p>
+<div class="read-next"><a class="chip" href="/silver-vs-gold.html">금 vs 은 비교 해설 읽기 →</a></div><div class="chartbox"><canvas aria-label="금과 은 장기 누적수익률 비교 차트" id="compareChart"></canvas><div class="legend"><span><i class="dot silver"></i>은</span><span><i class="dot gold"></i>금</span><span>시작값=100</span></div></div></section>
+<section class="section fed-section home-panel" id="fed"><div class="eyebrow">FED RATE-HIKE CYCLES</div><h2>미국 금리인상기, 금과 은은 어떻게 움직였을까?</h2><p>각 금리인상 사이클 시작값을 100으로 맞춰 금·은의 가격 변화를 비교합니다. “금리 인상 = 귀금속 무조건 하락”이라는 단순한 가정이 실제로 맞았는지 확인할 수 있습니다.</p>
 <div class="tabs"><button class="tab fed-cycle" data-cycle="2004-2006">2004~2006</button><button class="tab fed-cycle" data-cycle="2015-2018">2015~2018</button><button class="tab fed-cycle active" data-cycle="2022-2023">2022~2023</button></div>
-<div class="chartbox"><div id="fedSummary" class="small muted">데이터 계산 중</div><canvas id="fedChart" aria-label="미국 금리인상기 금과 은 비교 차트"></canvas><div class="legend"><span><i class="dot silver"></i>은</span><span><i class="dot gold"></i>금</span><span>사이클 시작=100</span></div></div>
+<div class="chartbox"><div class="small muted" id="fedSummary">데이터 계산 중</div><canvas aria-label="미국 금리인상기 금과 은 비교 차트" id="fedChart"></canvas><div class="legend"><span><i class="dot silver"></i>은</span><span><i class="dot gold"></i>금</span><span>사이클 시작=100</span></div></div>
 <div class="source">금리인상 구간은 미국 연방준비제도(Federal Reserve) 공식 금리 변경일을 기준으로 구분했습니다.</div><div class="read-next"><a class="chip" href="/fed-silver-gold.html">금리인상기 금·은 분석 전체 보기 →</a></div></section>
-
-<section id="gold-silver-ratio" class="section ratio-section home-panel ratio-panel">
-  <div class="section-head"><div><div class="eyebrow">GOLD / SILVER RATIO</div><h2>금 1온스로 은을 몇 온스 살 수 있을까?</h2></div><a class="chip" href="/wall-street-indicators.html">월가 지표 전체 보기 →</a></div>
-  <p>금은비는 <strong>금 1온스 가격 ÷ 은 1온스 가격</strong>으로 계산합니다. 비율이 높을수록 같은 금 1온스로 더 많은 은을 살 수 있다는 뜻으로, 은이 금보다 상대적으로 약했던 구간을 확인할 때 쓰입니다.</p>
-  <div class="ratio-chart-card">
-    <img src="/assets/gold-silver-ratio-20y.png?v=20260828-39" alt="2006년부터 2025년까지 금은비 20년 추이 차트" loading="lazy" width="1539" height="647">
-    <div class="ratio-stats">
-      <div><span>20년 평균</span><strong>70.2배</strong></div>
-      <div><span>연말 기준 최고</span><strong>90.8배 <small>2024</small></strong></div>
-      <div><span>연말 기준 최저</span><strong>46.0배 <small>2010</small></strong></div>
-    </div>
-    <div class="ratio-read"><strong>어떻게 읽을까?</strong><span>높은 금은비는 은의 상대적 약세, 낮은 금은비는 은의 상대적 강세를 뜻합니다. 다만 금은비만으로 고평가·저평가나 매수 시점을 단정할 수는 없습니다.</span></div>
-    <div class="source ratio-source">2006~2025년 연말 종가 기준 · Gold/Silver Ratio = XAU/USD ÷ XAG/USD · 원자료: <a href="https://www.statmuse.com/money/ask/yearly-gold-price" target="_blank" rel="noopener">StatMuse Money</a>의 금·은 연도별 종가, Silver Today 계산 · 연 1회 갱신 예정</div>
-  </div>
+<section class="section ratio-section home-panel ratio-panel" id="gold-silver-ratio">
+<div class="section-head"><div><div class="eyebrow">GOLD / SILVER RATIO</div><h2>금 1온스로 은을 몇 온스 살 수 있을까?</h2></div><a class="chip" href="/wall-street-indicators.html">월가 지표 전체 보기 →</a></div>
+<p>금은비는 <strong>금 1온스 가격 ÷ 은 1온스 가격</strong>으로 계산합니다. 비율이 높을수록 같은 금 1온스로 더 많은 은을 살 수 있다는 뜻으로, 은이 금보다 상대적으로 약했던 구간을 확인할 때 쓰입니다.</p>
+<div class="ratio-chart-card">
+<img alt="2006년부터 2025년까지 금은비 20년 추이 차트" height="647" loading="lazy" src="/assets/gold-silver-ratio-20y.png?v=20260828-39" width="1539"/>
+<div class="ratio-stats">
+<div><span>20년 평균</span><strong>70.2배</strong></div>
+<div><span>연말 기준 최고</span><strong>90.8배 <small>2024</small></strong></div>
+<div><span>연말 기준 최저</span><strong>46.0배 <small>2010</small></strong></div>
+</div>
+<div class="ratio-read"><strong>어떻게 읽을까?</strong><span>높은 금은비는 은의 상대적 약세, 낮은 금은비는 은의 상대적 강세를 뜻합니다. 다만 금은비만으로 고평가·저평가나 매수 시점을 단정할 수는 없습니다.</span></div>
+<div class="source ratio-source">2006~2025년 연말 종가 기준 · Gold/Silver Ratio = XAU/USD ÷ XAG/USD · 원자료: <a href="https://www.statmuse.com/money/ask/yearly-gold-price" rel="noopener" target="_blank">StatMuse Money</a>의 금·은 연도별 종가, Silver Today 계산 · 연 1회 갱신 예정</div>
+</div>
 </section>
-
-<section class="section invest-section"><div class="section-head"><div><div class="eyebrow">HOW TO INVEST</div><h2>은에 투자하는 방법</h2></div><a class="chip" href="/silver-etf.html">국내·미국 상품 전체 가이드 →</a></div>
+<section class="section investor-board">
+<div class="section-head"><div><div class="eyebrow">INVESTOR CHECK</div><h2>은 투자 전, 네 가지만 빠르게 확인</h2></div><a class="quiet-link" href="/wall-street-indicators.html">7가지 월가 지표 →</a></div>
+<div class="check-grid">
+<a class="check-item" href="#market-pulse"><span>① 가격 위치</span><strong id="checkPosition">최근 1년 위치 계산 중</strong><small>지금 가격이 1년 범위 어디쯤인지</small></a>
+<a class="check-item" href="/silver-bar-guide.html"><span>② 실물 가격차</span><strong id="checkPremium">KB 가격 확인 중</strong><small>국제 은 가치와 실제 구매가의 간격</small></a>
+<a class="check-item" href="/silver-risk.html"><span>③ 하락 위험</span><strong id="checkMdd">20년 MDD 계산 중</strong><small>과거 고점에서 얼마나 크게 빠졌는지</small></a>
+<a class="check-item" href="#gold-silver-ratio"><span>④ 금과 상대가치</span><strong>20년 금은비 보기</strong><small>은이 금 대비 강했는지 약했는지</small></a>
+</div>
+</section><section class="section invest-section"><div class="section-head"><div><div class="eyebrow">HOW TO INVEST</div><h2>은에 투자하는 방법</h2></div><a class="chip" href="/silver-etf.html">국내·미국 상품 전체 가이드 →</a></div>
 <div class="page-links"><a class="page-link" href="/silver-etf.html"><strong>국내 ETF·ETN</strong><span>KODEX 은선물(H), 레버리지·인버스 ETN 등</span></a><a class="page-link" href="/silver-etf.html#us"><strong>미국 은 ETF·Trust</strong><span>SLV, SIVR, PSLV, AGQ, ZSL, SIL, SILJ 등</span></a><a class="page-link" href="/silver-risk.html"><strong>은 투자 위험</strong><span>최대낙폭·금과의 장기 비교·금리인상기</span></a></div></section>
-
-<section id="calculator" class="section card calculator-card"><div class="eyebrow">SILVER CALCULATOR</div><h2>은값 계산기</h2><p>오늘 국제시세 환산 기준으로 원하는 무게의 은값을 계산합니다.</p><div class="calc-row"><input id="amount" type="number" value="1" min="0" step="0.1" aria-label="수량"><select id="unit" aria-label="단위"><option value="3.75">돈</option><option value="1">g</option><option value="100">100g</option><option value="1000">kg</option></select><button id="calculateBtn">계산</button></div><div class="result">예상 환산가격 <strong id="calcValue">시세 로딩 중</strong></div></section>
-
+<section class="section card calculator-card" id="calculator"><div class="eyebrow">SILVER CALCULATOR</div><h2>은값 계산기</h2><p>오늘 국제시세 환산 기준으로 원하는 무게의 은값을 계산합니다.</p><div aria-label="빠른 무게 선택" class="calc-presets"><button data-grams="100" type="button">100g</button><button data-grams="500" type="button">500g</button><button data-grams="1000" type="button">1kg</button><a href="/silver-calculator.html">계산기 전체 보기 →</a></div><div class="calc-row"><input aria-label="수량" id="amount" min="0" step="0.1" type="number" value="1"/><select aria-label="단위" id="unit"><option value="3.75">돈</option><option value="1">g</option><option value="100">100g</option><option value="1000">kg</option></select><button id="calculateBtn">계산</button></div><div class="result">예상 환산가격 <strong id="calcValue">시세 로딩 중</strong></div></section>
 <section class="section quiet-section"><h2>Silver Today가 보여주는 것</h2><p>단순히 오늘 은값만 표시하지 않습니다. 은 1돈·100g·500g·1kg 환산가격, 장기 최대낙폭, 금과 은의 장기 성과, 미국 금리인상기 움직임, 국내·미국 은 투자상품을 한곳에서 확인할 수 있도록 구성했습니다.</p><div class="notice">※ 모든 가격과 분석은 정보 제공용입니다. 실제 실버바 가격에는 부가가치세, 제조·가공비, 유통비, 판매처 마진 등이 포함될 수 있습니다. ETF·ETN은 상품 구조, 환율, 롤오버, 괴리율, 레버리지 효과 등에 따라 은 현물과 다른 성과가 날 수 있습니다.</div></section>
 </main>
-
 <footer class="footer"><div class="wrap">
-  <div class="footer-links">
-    <a href="/about.html">사이트 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/contact.html">문의</a><a href="/disclaimer.html">면책사항</a>
-  </div>
-  <strong>오늘 은시세 · Silver Today</strong><br>
+<div class="footer-links">
+<a href="/about.html">사이트 소개</a><a href="/privacy.html">개인정보처리방침</a><a href="/contact.html">문의</a><a href="/disclaimer.html">면책사항</a>
+</div>
+<strong>오늘 은시세 · Silver Today</strong><br/>
   국제 은가격과 환율을 바탕으로 한 정보 제공 서비스입니다. 투자 권유가 아닙니다.
 </div></footer>
-
-<script src="/app-v31.js?v=20260826-61" defer></script></body></html>
+<script defer="" src="/app-v31.js?v=20260826-61"></script><script defer="True" src="/home-v40.js?v=20260828-40"></script></body></html>
