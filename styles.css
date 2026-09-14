@@ -477,3 +477,36 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
 @media(max-width:360px){
   .asset-kick-card strong{font-size:21px}
 }
+
+
+/* v47.1: AdSense review + mobile readability/layout polish (2026-09-14) */
+.hero-subtitle span{display:block}
+.home-hero .lead{font-size:17px;line-height:1.68;color:#3f4953}
+.marker-highlight{position:relative;z-index:0;color:#20262d!important;font-weight:950;padding:0 .08em}
+.marker-highlight:before{content:"";position:absolute;z-index:-1;left:-.08em;right:-.08em;bottom:.08em;height:.58em;background:linear-gradient(90deg,rgba(255,226,122,.76),rgba(255,239,174,.68));border-radius:4px;transform:rotate(-.3deg)}
+.market-title-eyebrow{font-size:18px!important;line-height:1.35;color:#111827!important;font-weight:950!important;letter-spacing:-.35px!important}
+.real-world-section{margin-top:30px;margin-bottom:30px}
+.real-world-section .premium-card{margin-top:0}
+.market-update-note{margin-top:30px;padding:14px 16px;border-top:1px solid #dde3e8;border-bottom:1px solid #dde3e8;background:rgba(255,255,255,.48);border-radius:12px}
+.market-update-note strong{display:block;font-size:12px;color:#4b5563;margin-bottom:3px}
+.market-update-note p{margin:0;color:#687482;font-size:11px;line-height:1.65}
+/* Gold/Silver ratio: guarantee readable copy on dark and light surfaces */
+.ratio-panel>p{color:#f1f4f7!important;font-size:15px;line-height:1.75;font-weight:650}
+.ratio-panel>p strong{color:#fff!important;font-weight:950}
+.ratio-chart-card{background:#fff!important;color:#111827!important}
+.ratio-stats span{color:#4b5563!important;font-size:12px;font-weight:900}
+.ratio-stats strong{color:#111827!important}
+.ratio-stats small{color:#596574!important}
+.ratio-read strong{color:#111827!important;font-size:14px;font-weight:950}
+.ratio-read span{color:#374151!important;font-size:14px;line-height:1.7;font-weight:600}
+.ratio-source{color:#53606d!important;font-size:11.5px;line-height:1.65}
+.ratio-source a{color:#234f78!important;font-weight:800}
+@media(max-width:720px){
+  .home-hero .lead{font-size:15px;line-height:1.7}
+  .hero-subtitle{font-size:18px;line-height:1.42}
+  .hero-subtitle span+span{margin-top:1px}
+  .market-title-eyebrow{font-size:17px!important}
+  .ratio-panel>p{font-size:14px}
+  .ratio-read span{font-size:13.5px}
+  .real-world-section{margin-top:26px;margin-bottom:26px}
+}
