@@ -686,3 +686,136 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   .home-page .home-hero .lead{font-size:15.5px}
   .home-page .market-title-eyebrow{font-size:19px!important}
 }
+
+/* V47.3 Coupang Partners silver-bar CTA · 2026-09-14 */
+.market-card .price-hero>.premium-soft{
+  isolation:isolate;
+}
+.market-card .price-hero>.premium-soft .premium-copy{
+  position:relative;
+  z-index:2;
+  min-width:0;
+}
+.coupang-silver-cta{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:2px;
+  min-height:94px;
+  padding:13px 14px;
+  border-radius:16px;
+  color:#17212b;
+  text-decoration:none;
+  border:1px solid rgba(214,155,59,.36);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,203,88,.35),transparent 48%),
+    linear-gradient(135deg,#fff 0%,#fff8e8 58%,#ffefc7 100%);
+  box-shadow:0 9px 24px rgba(128,83,16,.10),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+.coupang-silver-cta:hover,
+.coupang-silver-cta:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(190,126,26,.55);
+  box-shadow:0 12px 28px rgba(128,83,16,.15),inset 0 1px 0 rgba(255,255,255,.95);
+}
+.coupang-cta-kicker{
+  display:block;
+  color:#7a5520;
+  font-size:11px;
+  line-height:1.3;
+  font-weight:900;
+  letter-spacing:-.1px;
+}
+.coupang-silver-cta strong{
+  display:block;
+  color:#111820;
+  font-size:18px;
+  line-height:1.18;
+  letter-spacing:-.55px;
+  white-space:nowrap;
+}
+.coupang-cta-action{
+  display:block;
+  margin-top:3px;
+  color:#b25c00;
+  font-size:11px;
+  line-height:1.3;
+  font-weight:950;
+}
+.coupang-cta-action b{font-size:14px}
+.affiliate-disclosure{
+  margin:9px 2px 0;
+  color:#5d6670;
+  font-size:10.5px;
+  line-height:1.55;
+  font-weight:650;
+  letter-spacing:-.08px;
+}
+.affiliate-disclosure span{
+  display:inline-block;
+  margin-right:5px;
+  padding:2px 6px;
+  border-radius:999px;
+  background:#242d36;
+  color:#fff;
+  font-size:9px;
+  line-height:1.25;
+  font-weight:900;
+  vertical-align:1px;
+}
+
+@media(min-width:721px){
+  .market-card .price-hero>.premium-soft{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .coupang-silver-cta{
+    min-height:0;
+    padding:11px 12px;
+  }
+  .coupang-silver-cta strong{font-size:16px}
+}
+
+@media(max-width:720px){
+  .market-card .price-hero>.premium-soft{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(142px,43%);
+    align-items:center;
+    gap:12px;
+    padding:15px;
+  }
+  .market-card .price-hero>.premium-soft:after{
+    right:-44px;
+    top:-44px;
+  }
+  .coupang-silver-cta{
+    min-height:112px;
+    padding:13px 12px;
+  }
+  .coupang-silver-cta strong{
+    font-size:18px;
+    white-space:normal;
+  }
+  .affiliate-disclosure{
+    margin:8px 3px 0;
+    font-size:10px;
+  }
+}
+
+@media(max-width:390px){
+  .market-card .price-hero>.premium-soft{
+    grid-template-columns:minmax(0,1fr) minmax(128px,42%);
+    gap:9px;
+    padding:13px;
+  }
+  .premium-hero-value{font-size:28px !important}
+  .premium-hero-meta{font-size:11px}
+  .coupang-silver-cta{min-height:104px;padding:11px 10px}
+  .coupang-cta-kicker{font-size:10px}
+  .coupang-silver-cta strong{font-size:16px}
+  .coupang-cta-action{font-size:10px}
+}
