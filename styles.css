@@ -510,3 +510,179 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   .ratio-read span{font-size:13.5px}
   .real-world-section{margin-top:26px;margin-bottom:26px}
 }
+
+
+/* V47.2: mobile visual polish only — preserve SEO copy/structure (2026-09-14) */
+/* A — stronger top brand */
+.home-page .brand{
+  font-size:22px;
+  line-height:1.15;
+  font-weight:950;
+  letter-spacing:-.65px;
+  color:#121821;
+}
+.home-page .brand span{color:#586675}
+
+/* B — force the hero subheading into exactly two clean lines */
+.home-page .hero-subtitle{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+  margin:0 0 14px;
+  color:#3b4652;
+  font-weight:950;
+}
+.home-page .hero-subtitle span{
+  display:block;
+  white-space:nowrap;
+}
+
+/* D — stronger intro copy + marker highlights */
+.home-page .home-hero .lead{
+  color:#27323d;
+  font-size:18px;
+  line-height:1.72;
+  font-weight:570;
+  letter-spacing:-.18px;
+}
+.home-page .marker-highlight{
+  position:relative;
+  z-index:0;
+  color:#17202a!important;
+  font-weight:950!important;
+  padding:0 .08em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.home-page .marker-highlight:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:-.08em;
+  right:-.08em;
+  bottom:.06em;
+  height:.63em;
+  background:linear-gradient(90deg,rgba(255,216,69,.72),rgba(255,239,154,.78));
+  border-radius:5px;
+  transform:rotate(-.25deg);
+}
+
+/* C — make today's KRW conversion heading feel like a proper section title */
+.home-page .market-title-eyebrow{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+  font-size:21px!important;
+  line-height:1.3!important;
+  color:#173d63!important;
+  font-weight:950!important;
+  letter-spacing:-.55px!important;
+  text-transform:none;
+}
+.home-page .market-title-eyebrow:before{
+  content:"";
+  width:5px;
+  height:27px;
+  flex:0 0 5px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#2f8df7,#1764b1);
+  box-shadow:0 0 0 4px rgba(47,141,247,.08);
+}
+
+/* E — clean, high-contrast Gold/Silver Ratio intro */
+.home-page .ratio-panel{
+  background:linear-gradient(145deg,#0f2743 0%,#173653 58%,#10283e 100%)!important;
+  box-shadow:0 18px 44px rgba(15,39,67,.18)!important;
+}
+.home-page .ratio-panel:before,
+.home-page .ratio-panel:after{display:none!important}
+.home-page .ratio-panel .eyebrow{color:#8eb6dd!important;font-weight:900!important}
+.home-page .ratio-panel h2{
+  color:#fff!important;
+  font-weight:950!important;
+  line-height:1.18;
+  letter-spacing:-1px;
+}
+.home-page .ratio-panel>p.ratio-intro{
+  margin:18px 0 20px;
+  padding:0!important;
+  background:none!important;
+  border:0!important;
+  color:#fff!important;
+  font-size:17px!important;
+  line-height:1.8!important;
+  font-weight:760!important;
+  text-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+.home-page .ratio-panel>p.ratio-intro strong{
+  color:#fff!important;
+  font-weight:950!important;
+}
+.home-page .ratio-highlight{
+  position:relative;
+  z-index:0;
+  display:inline;
+  padding:0 .08em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.home-page .ratio-highlight:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:-.09em;
+  right:-.09em;
+  bottom:.02em;
+  height:.64em;
+  background:linear-gradient(90deg,rgba(255,198,36,.92),rgba(255,223,92,.86));
+  border-radius:5px;
+  transform:rotate(-.35deg);
+}
+
+/* F — give the ratio summary cards distinct, restrained color cues */
+.home-page .ratio-stats>div{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 8px 22px rgba(17,39,62,.06);
+}
+.home-page .ratio-stats>div:nth-child(1){background:linear-gradient(135deg,#eaf5ff,#dfefff)!important}
+.home-page .ratio-stats>div:nth-child(2){background:linear-gradient(135deg,#fff4d9,#ffefd0)!important}
+.home-page .ratio-stats>div:nth-child(3){background:linear-gradient(135deg,#e8f8f2,#dcf2eb)!important}
+.home-page .ratio-stats>div:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  border-radius:4px;
+}
+.home-page .ratio-stats>div:nth-child(1):before{background:#2e7cc4}
+.home-page .ratio-stats>div:nth-child(2):before{background:#c58a17}
+.home-page .ratio-stats>div:nth-child(3):before{background:#1a9a72}
+.home-page .ratio-stats>div:nth-child(1) span{color:#285f91!important}
+.home-page .ratio-stats>div:nth-child(2) span{color:#8b6416!important}
+.home-page .ratio-stats>div:nth-child(3) span{color:#23775f!important}
+.home-page .ratio-stats strong{font-size:24px!important;line-height:1.18}
+
+@media(max-width:720px){
+  .home-page .brand{font-size:22px}
+  .home-page .hero-subtitle{font-size:18px;line-height:1.32;gap:2px;margin-bottom:13px}
+  .home-page .home-hero .lead{font-size:16px;line-height:1.76}
+  .home-page .market-title-eyebrow{font-size:20px!important}
+  .home-page .ratio-panel h2{font-size:29px;line-height:1.16}
+  .home-page .ratio-panel>p.ratio-intro{font-size:16px!important;line-height:1.78!important}
+  .home-page .ratio-stats>div{padding:16px 18px}
+  .home-page .ratio-stats span{font-size:13px!important}
+  .home-page .ratio-stats strong{font-size:27px!important}
+}
+@media(max-width:390px){
+  .home-page .brand{font-size:21px}
+  .home-page .hero-subtitle{font-size:17px}
+  .home-page .home-hero .lead{font-size:15.5px}
+  .home-page .market-title-eyebrow{font-size:19px!important}
+}
