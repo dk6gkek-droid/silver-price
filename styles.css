@@ -857,18 +857,20 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   justify-content:space-between;
   gap:12px;
   padding:9px 12px;
-  border:1px solid #d7dde4;
+  border:1px solid rgba(219,177,78,.42);
   border-radius:13px;
-  background:linear-gradient(135deg,#f7f9fb 0%,#eef3f7 100%);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,211,97,.32),transparent 42%),
+    linear-gradient(135deg,#fffdf4 0%,#fff7df 60%,#ffefc4 100%);
   color:#1d2731;
-  box-shadow:0 5px 14px rgba(35,48,61,.05);
+  box-shadow:0 7px 18px rgba(150,110,34,.09),inset 0 1px 0 rgba(255,255,255,.85);
   transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
 }
 .top-safe-cta:hover,
 .top-safe-cta:focus-visible{
   transform:translateY(-1px);
-  border-color:#b9c4cf;
-  box-shadow:0 8px 18px rgba(35,48,61,.08);
+  border-color:rgba(194,145,40,.56);
+  box-shadow:0 10px 22px rgba(150,110,34,.13),inset 0 1px 0 rgba(255,255,255,.92);
 }
 .top-safe-cta span{
   min-width:0;
@@ -876,7 +878,7 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   line-height:1.28;
   font-weight:900;
   letter-spacing:-.25px;
-  color:#404b56;
+  color:#6e5220;
 }
 .top-safe-cta strong{
   flex:0 0 auto;
@@ -885,7 +887,7 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   line-height:1.2;
   font-weight:950;
   letter-spacing:-.2px;
-  color:#173d63;
+  color:#9b5b00;
 }
 .top-safe-cta strong b{font-size:13px}
 .top-safe-disclosure{
@@ -957,4 +959,40 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   .top-safe-cta span{font-size:10.8px}
   .top-safe-cta strong{font-size:10.8px}
   .top-safe-disclosure{font-size:10px;line-height:1.35}
+}
+
+
+/* V47.4.1: homepage banner warm tint + calculator affiliate card (2026-09-15) */
+.calc-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(240px,300px);
+  gap:18px;
+  align-items:start;
+}
+.calc-hero-copy{min-width:0}
+.calc-hero-affiliate{align-self:start}
+.calc-coupang-cta{
+  min-height:136px;
+  padding:16px 16px 15px;
+}
+.calc-coupang-cta .coupang-cta-kicker{font-size:13px}
+.calc-coupang-cta strong{font-size:26px;line-height:1.12;white-space:normal}
+.calc-coupang-cta .coupang-cta-action{font-size:12px}
+.calc-affiliate-disclosure{margin-top:7px}
+
+@media(max-width:720px){
+  .calc-hero{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .calc-coupang-cta{
+    min-height:0;
+    padding:14px 14px 13px;
+  }
+  .calc-coupang-cta strong{font-size:23px}
+}
+
+@media(max-width:390px){
+  .calc-coupang-cta strong{font-size:21px}
+  .calc-coupang-cta .coupang-cta-kicker{font-size:12px}
 }
