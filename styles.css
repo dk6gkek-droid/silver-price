@@ -819,3 +819,20 @@ body.home-page{background:linear-gradient(180deg,#f7f8f9 0,#f4f6f8 420px,#f4f6f8
   .coupang-silver-cta strong{font-size:16px}
   .coupang-cta-action{font-size:10px}
 }
+
+
+/* v47.3.1: Coupang CTA micro-polish (2026-09-15) */
+.home-page .marker-highlight:before{right:0!important;left:0!important}
+.coupang-cta-kicker{font-size:13px;line-height:1.35;font-weight:950;letter-spacing:-.18px}
+.coupang-silver-cta strong{font-size:20px;line-height:1.16;letter-spacing:-.6px}
+.coupang-cta-action{font-size:11px}
+@media(max-width:720px){
+  .coupang-cta-kicker{font-size:12.5px}
+  .coupang-silver-cta strong{font-size:19px}
+  .coupang-cta-action{font-size:10px}
+}
+@media(max-width:390px){
+  .coupang-cta-kicker{font-size:11.5px}
+  .coupang-silver-cta strong{font-size:18px}
+  .coupang-cta-action{font-size:10px}
+}
